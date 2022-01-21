@@ -1,7 +1,7 @@
 import {RestInstance, getClaimRecords} from '@hanchon/evmosjs';
 import {ClaimRecord} from '../types';
 
-const EVMOS_URL = 'http://rest.evmos.me/';
+const EVMOS_URL = 'https://rest.evmos.me/';
 
 const EvmosClient = new RestInstance(EVMOS_URL);
 
