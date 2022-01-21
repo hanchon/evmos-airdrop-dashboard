@@ -3,6 +3,7 @@ import './missionControl.css';
 import '../../index.css';
 import '../../../node_modules/react-grid-layout/css/styles.css';
 import '../../../node_modules/react-resizable/css/styles.css';
+import {GlobalMissionStats, UserMissionStats} from 'src/types';
 
 const GridLayout = require('react-grid-layout');
 
@@ -33,7 +34,13 @@ const getLayoutForKeys = (keys: string[]) => {
   };
 };
 
-function MissionControlGrid(props: any) {
+export interface MissionControlProps {
+  userMissionStats: UserMissionStats;
+  globalMissionStats: GlobalMissionStats;
+}
+
+function MissionControlGrid(props: MissionControlProps) {
+  const {userMissionStats, globalMissionStats} = props;
   const keys = ['1', '2', '3'];
   const layout = getLayoutForKeys(keys);
 
@@ -80,16 +87,35 @@ function MissionControlGrid(props: any) {
       cols={{lg: 12, md: 12, sm: 8, xs: 4}}>
       <div className="m--card" key="1">
         <div className="m--card--title">My Summary</div>
-        {fieldCardRow('TOTAL POINTS', '150')}
-        {fieldCardRow('RANK', '48')}
-        {fieldCardRow('COMPLETED MISSIONS', '8', '20')}
-        {fieldCardRow('UNEARNED POINTS', '425', undefined, true)}
+        {fieldCardRow('TOTAL POINTS', String(userMissionStats.totalPoints))}
+        {fieldCardRow('RANK', String(globalMissionStats.rank))}
+        {fieldCardRow(
+          'COMPLETED MISSIONS',
+          String(userMissionStats.numCompletedTasks),
+          '20',
+        )}
+        {fieldCardRow(
+          'UNEARNED POINTS',
+          String(
+            userMissionStats.totalPoints - userMissionStats.completedPoints,
+          ),
+          undefined,
+          true,
+        )}
       </div>
       <div className="m--card" key="2">
         <div className="m--card--title">Everyone Else</div>
-        {fieldCardRow('PARTICIPANTS', '4728')}
-        {fieldCardRow('COMPLETED MISSIONS', '33825')}
-        {fieldCardRow('HIGHEST POINTS', '560', undefined, true)}
+        {fieldCardRow('PARTICIPANTS', String(globalMissionStats.participants))}
+        {fieldCardRow(
+          'COMPLETED MISSIONS',
+          String(globalMissionStats.completedMissions),
+        )}
+        {fieldCardRow(
+          'HIGHEST POINTS',
+          String(globalMissionStats.highestPoints),
+          undefined,
+          true,
+        )}
       </div>
       <div className="m--card" key="3">
         <div className="m--card--title">Latest Transmissions</div>
@@ -111,11 +137,14 @@ function MissionControlGrid(props: any) {
   );
 }
 
-export default function MissionControlPage(props: any) {
+export default function MissionControlPage(props: MissionControlProps) {
   return (
     <div className="page-base page-content">
       <div className="page--header">Mission Control</div>
-      <MissionControlGrid />
+      <MissionControlGrid
+        userMissionStats={props.userMissionStats}
+        globalMissionStats={props.globalMissionStats}
+      />
     </div>
   );
 }
