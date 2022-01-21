@@ -4,6 +4,7 @@ import '../../index.css';
 import '../../../node_modules/react-grid-layout/css/styles.css';
 import '../../../node_modules/react-resizable/css/styles.css';
 
+import {Claim} from '@hanchon/evmosjs';
 import rektdropIcon from '../../images/rektdropIcon.svg';
 
 const GridLayout = require('react-grid-layout');
@@ -35,9 +36,16 @@ const getLayoutForKeys = (keys: string[]) => {
   };
 };
 
-function RektdropRewardsGrid(props: any) {
-  const keys = ['1', '2', '3', '4'];
-  const layout = getLayoutForKeys(keys);
+interface RektDropProps {
+  rektDropClaims: Claim[];
+}
+
+function RektdropRewardsGrid(props: RektDropProps) {
+  const {rektDropClaims} = props;
+  const numbersAsStringsKeys = Array.from(
+    Array(rektDropClaims.length).keys(),
+  ).map(i => String(i));
+  const layout = getLayoutForKeys(numbersAsStringsKeys);
 
   const card = (
     header: string,
@@ -78,47 +86,29 @@ function RektdropRewardsGrid(props: any) {
       rowHeight={200}
       margin={[0, 12]}
       cols={{lg: 4, md: 4, sm: 4, xs: 4}}>
-      <div className="r--card card-completed" key="1">
-        {card(
-          'Vivamus quis velit nec qugue loborti',
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in odio fermentum, auctor dui pretium, commodo neque.',
-          10,
-          true,
-        )}
-      </div>
-      <div className="r--card" key="2">
-        {card(
-          'Vivamus quis velit nec qugue loborti',
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in odio fermentum, auctor dui pretium, commodo neque.',
-          10,
-          false,
-        )}
-      </div>
-      <div className="r--card" key="3">
-        {card(
-          'Vivamus quis velit nec qugue loborti',
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in odio fermentum, auctor dui pretium, commodo neque.',
-          10,
-          false,
-        )}
-      </div>
-      <div className="r--card" key="4">
-        {card(
-          'Vivamus quis velit nec qugue loborti',
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in odio fermentum, auctor dui pretium, commodo neque.',
-          10,
-          false,
-        )}
-      </div>
+      {rektDropClaims.map((claim, i) => {
+        return (
+          <div
+            className={`r--card ${claim.completed ? 'card-completed' : ''}`}
+            key={String(i)}>
+            {card(
+              String(claim.action),
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in odio fermentum, auctor dui pretium, commodo neque.',
+              Number(claim.claimable_amount),
+              claim.completed,
+            )}
+          </div>
+        );
+      })}
     </ResponsiveGridLayout>
   );
 }
 
-export default function RektdropRewardsPage(props: any) {
+export default function RektdropRewardsPage(props: RektDropProps) {
   return (
     <div className="page-base page-content">
       <div className="page--header">Rektdrop Rewards</div>
-      <RektdropRewardsGrid />
+      <RektdropRewardsGrid rektDropClaims={props.rektDropClaims} />
     </div>
   );
 }

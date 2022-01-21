@@ -27,3 +27,16 @@ export interface LeaderBoardEntry {
 export interface LeaderboardReturnObject {
   leaderboard: LeaderBoardEntry[];
 }
+
+export interface GlobalMissionStats {
+  rank: number;
+  participants: number;
+  completedMissions: number;
+  highestPoints: number;
+}
+
+export interface UserMissionStats {
+  completedPoints: number;
+  totalPoints: number;
+  numCompletedTasks: number;
+}
