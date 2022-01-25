@@ -15,42 +15,23 @@ export async function getCompletedTasks(address: string): Promise<number[]> {
   return data.missions;
 }
 
-export async function getLeaderboardData(): Promise<LeaderBoardEntry[]> {
-  // const res = await axios.get(`${apiDomain}/leaderboard`);
-  // const {data}: {data: LeaderboardReturnObject} = res;
-  // return data.leaderboard;
-  return [
-    {
-      walletAddress: '0x25dd91069f120d955803def92f2d1b32c2b471de',
-      points: 560,
-    },
-    {
-      walletAddress: '0x25dd91061f220d955804def92f2d1b32c2b491dc',
-      points: 535,
-    },
-    {
-      walletAddress: '0x25dd91069f120d955803def92f2d1b32c2b471de',
-      points: 510,
-    },
-    {
-      walletAddress: '0x25dd91061f220d955804def92f2d1b32c2b491dc',
-      points: 495,
-    },
-  ];
+export async function getLeaderboardData(
+  page: number,
+  perPage: number,
+): Promise<LeaderBoardEntry[]> {
+  const res = await axios.get(`${apiDomain}/leaderboard`, {
+    params: {page, per_page: perPage},
+  });
+  const {data}: {data: LeaderboardReturnObject} = res;
+  return data.leaderboard;
 }
 
 export async function getGlobalMissionStats(
   walletAddress: string,
 ): Promise<GlobalMissionStats> {
-  // const res = await axios.get(`${apiDomain}/mission_stats/${walletAddress}`);
-  // const {data}: {data: any} = res;
-  // return data;
-  return {
-    rank: 0,
-    participants: 4768,
-    completedMissions: 36789,
-    highestPoints: 455,
-  };
+  const res = await axios.get(`${apiDomain}/mission_stats/${walletAddress}`);
+  const {data}: {data: {stats: GlobalMissionStats}} = res;
+  return data.stats;
 }
 
 export function getAnalytics(

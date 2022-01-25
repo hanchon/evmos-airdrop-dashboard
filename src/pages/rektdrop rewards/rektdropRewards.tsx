@@ -36,11 +36,15 @@ const getLayoutForKeys = (keys: string[]) => {
   };
 };
 
-interface RektDropProps {
+interface RektDropGridProps {
   rektDropClaims: Claim[];
 }
 
-function RektdropRewardsGrid(props: RektDropProps) {
+interface RektDropProps extends RektDropGridProps {
+  rektDropError: string;
+}
+
+function RektdropRewardsGrid(props: RektDropGridProps) {
   const {rektDropClaims} = props;
   const numbersAsStringsKeys = Array.from(
     Array(rektDropClaims.length).keys(),
@@ -108,7 +112,11 @@ export default function RektdropRewardsPage(props: RektDropProps) {
   return (
     <div className="page-base page-content">
       <div className="page--header">Rektdrop Rewards</div>
-      <RektdropRewardsGrid rektDropClaims={props.rektDropClaims} />
+      {props.rektDropError ? (
+        <p className="rekt-error">{props.rektDropError} </p>
+      ) : (
+        <RektdropRewardsGrid rektDropClaims={props.rektDropClaims} />
+      )}
     </div>
   );
 }

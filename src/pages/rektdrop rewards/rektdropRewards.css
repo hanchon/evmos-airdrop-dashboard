@@ -81,6 +81,9 @@
   background: #000000;
   color: #fff;
 }
+.rekt-error {
+  color: red
+}
 
 /* Mobile Phone CSS */
 @media screen and (max-width: 768px) {

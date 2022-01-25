@@ -22,8 +22,14 @@ function App() {
   const [userAddress, setUserAddress] = React.useState('');
   const [completedTasks, setCompletedTasks] = React.useState([] as number[]);
   const [rektDropClaims, setRektDropClaims] = React.useState([] as Claim[]);
+  const [rektDropError, setRektDropError] = React.useState('');
   const [globalMissionStats, setGlobalMissionStats] = React.useState(
     {} as GlobalMissionStats,
+  );
+
+  const userMissionStats = getAnalytics(
+    completedTasks,
+    Object.values(MissionData).flatMap(array => array),
   );
 
   const updateKeplrState = (address: string | null): void => {
@@ -35,19 +41,20 @@ function App() {
     setPage(3);
   };
 
+  async function getContent() {
+    const completedTasksResponse = getCompletedTasks(userAddress);
+    const rektDropInformationResponse = getRektDropInformation(userAddress);
+    const globalMissionStatsResposne = getGlobalMissionStats(userAddress);
+
+    setCompletedTasks(await completedTasksResponse);
+    setRektDropClaims((await rektDropInformationResponse).claims);
+    setRektDropError((await rektDropInformationResponse).error);
+    setGlobalMissionStats(await globalMissionStatsResposne);
+  }
+
   useEffect(() => {
     if (userAddress) {
-      getCompletedTasks(userAddress).then(tasks => {
-        setCompletedTasks(tasks);
-      });
-
-      getRektDropInformation(userAddress).then(data => {
-        setRektDropClaims(data.claims);
-      });
-
-      getGlobalMissionStats(userAddress).then(data => {
-        setGlobalMissionStats(data);
-      });
+      getContent();
     }
   }, [userAddress]);
 
@@ -59,17 +66,19 @@ function App() {
     if (page === 1) {
       return (
         <MissionControlPage
-          userMissionStats={getAnalytics(
-            completedTasks,
-            Object.values(MissionData).flatMap(array => array),
-          )}
+          userMissionStats={userMissionStats}
           globalMissionStats={globalMissionStats}
         />
       );
     }
 
     if (page === 2) {
-      return <RektdropRewardsPage rektDropClaims={rektDropClaims} />;
+      return (
+        <RektdropRewardsPage
+          rektDropClaims={rektDropClaims}
+          rektDropError={rektDropError}
+        />
+      );
     }
 
     if (page === 3) {
@@ -92,7 +101,7 @@ function App() {
     <div className="page-base">
       {page !== 0 && (
         <NavigationBar
-          pointCount={150}
+          pointCount={userMissionStats.completedPoints}
           selectedPage={page}
           address={userAddress}
           didSelectPage={(newPage: number) => {
