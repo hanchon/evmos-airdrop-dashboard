@@ -87,17 +87,21 @@ function MissionControlGrid(props: MissionControlProps) {
       cols={{lg: 12, md: 12, sm: 8, xs: 4}}>
       <div className="m--card" key="1">
         <div className="m--card--title">My Summary</div>
-        {fieldCardRow('TOTAL POINTS', String(userMissionStats.totalPoints))}
-        {fieldCardRow('RANK', String(globalMissionStats.rank))}
+        {fieldCardRow(
+          'TOTAL POINTS',
+          String(userMissionStats.totalPoints || 0),
+        )}
+        {fieldCardRow('RANK', String(globalMissionStats.rank || 0))}
         {fieldCardRow(
           'COMPLETED MISSIONS',
-          String(userMissionStats.numCompletedTasks),
+          String(userMissionStats.numCompletedTasks || 0),
           '20',
         )}
         {fieldCardRow(
           'UNEARNED POINTS',
           String(
-            userMissionStats.totalPoints - userMissionStats.completedPoints,
+            userMissionStats.totalPoints - userMissionStats.completedPoints ||
+              0,
           ),
           undefined,
           true,
@@ -105,14 +109,17 @@ function MissionControlGrid(props: MissionControlProps) {
       </div>
       <div className="m--card" key="2">
         <div className="m--card--title">Everyone Else</div>
-        {fieldCardRow('PARTICIPANTS', String(globalMissionStats.participants))}
+        {fieldCardRow(
+          'PARTICIPANTS',
+          String(globalMissionStats.participants || 0),
+        )}
         {fieldCardRow(
           'COMPLETED MISSIONS',
-          String(globalMissionStats.completedMissions),
+          String(globalMissionStats.completedMissions || 0),
         )}
         {fieldCardRow(
           'HIGHEST POINTS',
-          String(globalMissionStats.highestPoints),
+          String(globalMissionStats.highestPoints || 0),
           undefined,
           true,
         )}
