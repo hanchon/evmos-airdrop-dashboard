@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 
 import LandingPage from './pages/landing/landing';
 import DashboardPage from './pages/dashboard/dashboard';
@@ -14,7 +14,7 @@ import {
   getGlobalMissionStats,
 } from './services/missionsService';
 import MissionData from './assets/missiondata';
-import {Claim, GlobalMissionStats} from './types';
+import { Claim, GlobalMissionStats } from './types';
 import getRektDropInformation from './services/evmos';
 
 function App() {

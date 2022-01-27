@@ -1,5 +1,5 @@
-import {RestInstance, getClaimRecords} from '@hanchon/evmosjs';
-import {ClaimRecord} from '../types';
+import { RestInstance, getClaimsRecord } from '@hanchon/evmosjs';
+import { ClaimsRecord } from '../types';
 
 const EVMOS_URL = 'https://rest.evmos.me/';
 
@@ -7,6 +7,6 @@ const EvmosClient = new RestInstance(EVMOS_URL);
 
 export default async function getRektDropInformation(
   address: string,
-): Promise<ClaimRecord> {
-  return getClaimRecords(EvmosClient, address);
+): Promise<ClaimsRecord> {
+  return getClaimsRecord(EvmosClient, address);
 }
