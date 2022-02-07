@@ -1,4 +1,4 @@
-import {chainId} from '../const';
+import { chainId } from '../const';
 
 interface KeplrWindow extends Window {
   keplr: any;
@@ -7,8 +7,9 @@ interface KeplrWindow extends Window {
 
 declare let window: KeplrWindow;
 
+// eslint-disable-next-line import/prefer-default-export
 export const connectKeplrWallet = async (): Promise<string | null> => {
-  const {keplr, getOfflineSignerOnlyAmino} = window;
+  const { keplr, getOfflineSignerOnlyAmino } = window;
 
   console.log('Checking keplr');
 

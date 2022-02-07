@@ -1,4 +1,4 @@
-import {MissionsObject, Task} from 'src/types';
+import { MissionsObject, Task } from 'src/types';
 
 const generateTask = (
   id: number,

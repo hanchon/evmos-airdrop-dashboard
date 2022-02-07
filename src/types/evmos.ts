@@ -1,6 +1,4 @@
-import { Claim } from '.';
-
-export type { Claim } from '@hanchon/evmosjs';
+import type { Claim } from '@hanchon/evmosjs';
 
 export interface ClaimsRecord {
   initial_claimable_amount: any;

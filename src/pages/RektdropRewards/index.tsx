@@ -1,10 +1,10 @@
 import React from 'react';
-import './rektdropRewards.css';
+import './index.css';
 import '../../index.css';
 import '../../../node_modules/react-grid-layout/css/styles.css';
 import '../../../node_modules/react-resizable/css/styles.css';
 
-import {Claim} from '@hanchon/evmosjs';
+import { Claim } from '@hanchon/evmosjs';
 import rektdropIcon from '../../images/rektdropIcon.svg';
 
 const GridLayout = require('react-grid-layout');
@@ -45,7 +45,7 @@ interface RektDropProps extends RektDropGridProps {
 }
 
 function RektdropRewardsGrid(props: RektDropGridProps) {
-  const {rektDropClaims} = props;
+  const { rektDropClaims } = props;
   const numbersAsStringsKeys = Array.from(
     Array(rektDropClaims.length).keys(),
   ).map(i => String(i));
@@ -69,14 +69,16 @@ function RektdropRewardsGrid(props: RektDropGridProps) {
         {isComplete && (
           <div
             className="card--point-tag card--point-tag-completed"
-            style={{marginRight: 8}}>
+            style={{ marginRight: 8 }}
+          >
             Completed
           </div>
         )}
         <div
           className={`card--point-tag ${
             isComplete && 'card--point-tag-completed'
-          }`}>{`${pointCount} PTS`}</div>
+          }`}
+        >{`${pointCount} PTS`}</div>
       </div>
     </>
   );
@@ -86,15 +88,17 @@ function RektdropRewardsGrid(props: RektDropGridProps) {
       className="layout r--grid"
       containerPadding={[0, 0]}
       layouts={layout}
-      breakpoints={{lg: 1200, md: 996, sm: 768, xs: 480}}
+      breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480 }}
       rowHeight={200}
       margin={[0, 12]}
-      cols={{lg: 4, md: 4, sm: 4, xs: 4}}>
+      cols={{ lg: 4, md: 4, sm: 4, xs: 4 }}
+    >
       {rektDropClaims.map((claim, i) => {
         return (
           <div
             className={`r--card ${claim.completed ? 'card-completed' : ''}`}
-            key={String(i)}>
+            key={String(i)}
+          >
             {card(
               String(claim.action),
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in odio fermentum, auctor dui pretium, commodo neque.',

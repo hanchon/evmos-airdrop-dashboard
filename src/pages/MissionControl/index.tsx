@@ -1,9 +1,9 @@
 import React from 'react';
-import './missionControl.css';
+import './index.css';
 import '../../index.css';
 import '../../../node_modules/react-grid-layout/css/styles.css';
 import '../../../node_modules/react-resizable/css/styles.css';
-import {GlobalMissionStats, UserMissionStats} from 'src/types';
+import { GlobalMissionStats, UserMissionStats } from 'src/types';
 
 const GridLayout = require('react-grid-layout');
 
@@ -40,7 +40,7 @@ export interface MissionControlProps {
 }
 
 function MissionControlGrid(props: MissionControlProps) {
-  const {userMissionStats, globalMissionStats} = props;
+  const { userMissionStats, globalMissionStats } = props;
   const keys = ['1', '2', '3'];
   const layout = getLayoutForKeys(keys);
 
@@ -81,10 +81,11 @@ function MissionControlGrid(props: MissionControlProps) {
       className="layout m--grid"
       containerPadding={[0, 0]}
       layouts={layout}
-      breakpoints={{lg: 1200, md: 996, sm: 768, xs: 480}}
+      breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480 }}
       rowHeight={240}
       margin={[48, 48]}
-      cols={{lg: 12, md: 12, sm: 8, xs: 4}}>
+      cols={{ lg: 12, md: 12, sm: 8, xs: 4 }}
+    >
       <div className="m--card" key="1">
         <div className="m--card--title">My Summary</div>
         {fieldCardRow(

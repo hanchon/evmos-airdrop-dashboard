@@ -1,6 +1,6 @@
 import React from 'react';
-import '../landing/landing.css';
-import './dashboard.css';
+import '../Landing/index.css';
+import './index.css';
 import '../../index.css';
 import '../../../node_modules/react-grid-layout/css/styles.css';
 import '../../../node_modules/react-resizable/css/styles.css';
@@ -41,9 +41,9 @@ const getLayoutForKeys = (keys: string[]) => {
 };
 
 function DashboardGrid(props: any) {
-  const {userMissions} = props;
+  const { userMissions } = props;
   const allMissions = Object.values(MissionData).flatMap((array, index) =>
-    array.map(val => ({...val, missionId: index + 1})),
+    array.map(val => ({ ...val, missionId: index + 1 })),
   );
   const keys = allMissions.map(mission => mission.id.toString());
 
@@ -53,14 +53,14 @@ function DashboardGrid(props: any) {
     if (userMissions.includes(id)) {
       return (
         <>
-          <div className="d--icon" style={{background: '#1CDC30'}} />
+          <div className="d--icon" style={{ background: '#1CDC30' }} />
           <p className="d--card--body">Completed</p>
         </>
       );
     }
     return (
       <>
-        <div className="d--icon" style={{background: '#F8A933'}} />
+        <div className="d--icon" style={{ background: '#F8A933' }} />
         <p className="d--card--body">Incomplete</p>
       </>
     );
@@ -71,10 +71,11 @@ function DashboardGrid(props: any) {
       className="layout d--grid"
       containerPadding={[0, 0]}
       layouts={layout}
-      breakpoints={{lg: 1200, md: 996, sm: 768, xs: 480}}
+      breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480 }}
       rowHeight={200}
       margin={[48, 48]}
-      cols={{lg: 12, md: 12, sm: 8, xs: 4}}>
+      cols={{ lg: 12, md: 12, sm: 8, xs: 4 }}
+    >
       {allMissions.map(mission => (
         <div className="d--card" key={mission.id}>
           <div className="d--card--tag">15 EVMOS</div>
@@ -91,12 +92,12 @@ function DashboardGrid(props: any) {
 }
 
 export default function DashboardPage(props: any) {
-  const {userAddress, userMissions, searchForWallet} = props;
+  const { userAddress, userMissions, searchForWallet } = props;
   const totalNumMissions = Object.values(MissionData)
     .map(array => array.length)
     .reduce((a, b) => a + b);
   const numComplete = userMissions.length;
-  const numIncomplete = totalNumMissions - numComplete;
+  // const numIncomplete = totalNumMissions - numComplete;
 
   // Add to leaderboard
   // const totalNumPoints = Object.values(MissionData)
@@ -104,11 +105,11 @@ export default function DashboardPage(props: any) {
   //   .map(mission => mission.points)
   //   .reduce((a, b) => a + b);
 
-  const userPoints = Object.values(MissionData)
-    .flatMap(array => array)
-    .filter(mission => userMissions.includes(mission.id))
-    .map(mission => mission.points)
-    .reduce((a, b) => a + b, 0);
+  // const userPoints = Object.values(MissionData)
+  //   .flatMap(array => array)
+  //   .filter(mission => userMissions.includes(mission.id))
+  //   .map(mission => mission.points)
+  //   .reduce((a, b) => a + b, 0);
 
   const dateLastUpdated = new Date().toLocaleDateString('en-US', {
     year: 'numeric',
@@ -142,7 +143,7 @@ export default function DashboardPage(props: any) {
           </form>
         </div>
         <div className="d--title-container">
-          <div className="d--col" style={{flex: 1}}>
+          <div className="d--col" style={{ flex: 1 }}>
             <h3 className="d--title d--desktop">{userAddress}</h3>
             <p className="d--caption">{`Last Updated – ${dateLastUpdated}`}</p>
           </div>

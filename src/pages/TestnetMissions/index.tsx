@@ -1,5 +1,5 @@
 import React from 'react';
-import './testnetMissions.css';
+import './index.css';
 import '../../index.css';
 import '../../../node_modules/react-grid-layout/css/styles.css';
 import '../../../node_modules/react-resizable/css/styles.css';
@@ -36,7 +36,7 @@ const getLayoutForKeys = (keys: string[]) => {
   };
 };
 
-function TestnetMissionsGrid(props: any) {
+function TestnetMissionsGrid() {
   const keys = ['1', '2', '3', '4', '5', '6', '7', '8'];
   const layout = getLayoutForKeys(keys);
 
@@ -54,7 +54,8 @@ function TestnetMissionsGrid(props: any) {
       <div
         className={`card--point-tag ${
           isComplete && 'card--point-tag-completed'
-        } t--card--point-tag`}>
+        } t--card--point-tag`}
+      >
         {`${isComplete ? `+${pointCount}` : pointCount} PTS`}
       </div>
       {isComplete && (
@@ -74,7 +75,7 @@ function TestnetMissionsGrid(props: any) {
           <div className="t--card--progress-bar--object">
             <div
               className="t--card--progress-bar--object-filled"
-              style={{width: `calc(${progress * 100}% - ${progress * 36}px)`}}
+              style={{ width: `calc(${progress * 100}% - ${progress * 36}px)` }}
             />
           </div>
         </div>
@@ -87,10 +88,11 @@ function TestnetMissionsGrid(props: any) {
       className="layout r--grid"
       containerPadding={[0, 0]}
       layouts={layout}
-      breakpoints={{lg: 1200, md: 996, sm: 768, xs: 480}}
+      breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480 }}
       rowHeight={220}
       margin={[18, 18]}
-      cols={{lg: 16, md: 12, sm: 8, xs: 4}}>
+      cols={{ lg: 16, md: 12, sm: 8, xs: 4 }}
+    >
       <div className="card t--card card-completed" key="1">
         {card(
           'Vivamus quis velit nec qugue loborti',
@@ -131,7 +133,7 @@ function TestnetMissionsGrid(props: any) {
   );
 }
 
-export default function TestnetMissionsPage(props: any) {
+export default function TestnetMissionsPage() {
   return (
     <div className="page-content">
       <div className="t--header">
@@ -141,7 +143,7 @@ export default function TestnetMissionsPage(props: any) {
             <div className="t--view-button--text">Sort By</div>
             <img src={arrowdown} alt="Down" className="t--view-button--icon" />
           </div>
-          <div className="t--view-button" style={{marginLeft: '12px'}}>
+          <div className="t--view-button" style={{ marginLeft: '12px' }}>
             <div className="t--view-button--text">Filter</div>
           </div>
         </div>

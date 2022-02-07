@@ -1,9 +1,9 @@
-import './navigationBar.css';
+import './index.css';
 import logo from '../../images/logo.svg';
 import qrcode from '../../images/qrcode.svg';
 
 export default function NavigationBar(props: any) {
-  const {address, pointCount, selectedPage, didSelectPage} = props;
+  const { address, pointCount, selectedPage, didSelectPage } = props;
   const pages = ['Mission Control', 'Rektdrop Rewards', 'Testnet Missions'];
 
   const stringAddress = address as string;
@@ -24,7 +24,8 @@ export default function NavigationBar(props: any) {
             className={`n--page ${
               i + 1 === selectedPage && 'n--page-selected'
             }`}
-            onClick={() => didSelectPage(i + 1)}>
+            onClick={() => didSelectPage(i + 1)}
+          >
             {page}
           </div>
         ))}

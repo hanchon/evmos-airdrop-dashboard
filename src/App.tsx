@@ -1,12 +1,16 @@
 import React, { useEffect } from 'react';
 
-import LandingPage from './pages/landing/landing';
-import DashboardPage from './pages/dashboard/dashboard';
-import MissionControlPage from './pages/mission control/missionControl';
-import RektdropRewardsPage from './pages/rektdrop rewards/rektdropRewards';
-import TestnetMissionsPage from './pages/testnet missions/testnetMissions';
+import type { Claim } from '@hanchon/evmosjs';
 
-import NavigationBar from './components/navigation bar/navigationBar';
+// Pages
+import LandingPage from './pages/Landing';
+import DashboardPage from './pages/Dashboard';
+import MissionControlPage from './pages/MissionControl';
+import RektdropRewardsPage from './pages/RektdropRewards';
+import TestnetMissionsPage from './pages/TestnetMissions';
+
+// Components
+import NavigationBar from './components/NavigationBar';
 
 import {
   getCompletedTasks,
@@ -14,7 +18,7 @@ import {
   getGlobalMissionStats,
 } from './services/missionsService';
 import MissionData from './assets/missiondata';
-import { Claim, GlobalMissionStats } from './types';
+import type { GlobalMissionStats } from './types';
 import getRektDropInformation from './services/evmos';
 
 function App() {
