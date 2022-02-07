@@ -7,7 +7,7 @@
 }
 
 .d--page-top {
-  background: url('../../images/dashboardBackground.svg');
+  background: url('@images/dashboardBackground.svg');
   background-position: bottom;
   background-size: cover;
 

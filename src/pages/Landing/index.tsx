@@ -1,7 +1,7 @@
 import './index.css';
 import '../../index.css';
-import logo from '../../images/logo.svg';
-import walletButton from '../../images/walletButton.svg';
+import logo from '@images/logo.svg';
+import walletButton from '@images/walletButton.svg';
 import { connectKeplrWallet } from '../../services/keplr';
 
 export interface LandingPageProps {

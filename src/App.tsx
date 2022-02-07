@@ -2,24 +2,28 @@ import React, { useEffect } from 'react';
 
 import type { Claim } from '@hanchon/evmosjs';
 
-// Pages
-import LandingPage from './pages/Landing';
-import DashboardPage from './pages/Dashboard';
-import MissionControlPage from './pages/MissionControl';
-import RektdropRewardsPage from './pages/RektdropRewards';
-import TestnetMissionsPage from './pages/TestnetMissions';
-
 // Components
-import NavigationBar from './components/NavigationBar';
+import NavigationBar from '@components/NavigationBar';
+
+// Pages
+import LandingPage from '@pages/Landing';
+import DashboardPage from '@pages/Dashboard';
+import MissionControlPage from '@pages/MissionControl';
+import RektdropRewardsPage from '@pages/RektdropRewards';
+import TestnetMissionsPage from '@pages/TestnetMissions';
 
 import {
   getCompletedTasks,
   getAnalytics,
   getGlobalMissionStats,
 } from './services/missionsService';
-import MissionData from './assets/missiondata';
+import MissionData from '@assets/missiondata';
 import type { GlobalMissionStats } from './types';
 import getRektDropInformation from './services/evmos';
+
+// Global Styles for react-grid-layout
+import '../node_modules/react-grid-layout/css/styles.css';
+import '../node_modules/react-resizable/css/styles.css';
 
 function App() {
   const [page, setPage] = React.useState(0);

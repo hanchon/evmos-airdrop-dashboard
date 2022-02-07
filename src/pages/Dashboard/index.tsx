@@ -1,17 +1,16 @@
-import React from 'react';
 import '../Landing/index.css';
 import './index.css';
 import '../../index.css';
-import '../../../node_modules/react-grid-layout/css/styles.css';
-import '../../../node_modules/react-resizable/css/styles.css';
 
-import magnifyingglass from '../../images/magnifyingglass.svg';
-import logo from '../../images/logo.svg';
-import cardimage from '../../images/cardimage.svg';
+// Components
+import GridLayout from 'react-grid-layout';
 
-import MissionData from '../../assets/missiondata';
+// Images
+import magnifyingglass from '@images/magnifyingglass.svg';
+import logo from '@images/logo.svg';
+import cardimage from '@images/cardimage.svg';
 
-const GridLayout = require('react-grid-layout');
+import MissionData from '@assets/missiondata';
 
 const ResponsiveGridLayout = GridLayout.WidthProvider(GridLayout.Responsive);
 

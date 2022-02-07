@@ -1,12 +1,9 @@
-import React from 'react';
+import GridLayout from 'react-grid-layout';
+
 import './index.css';
 import '../../index.css';
-import '../../../node_modules/react-grid-layout/css/styles.css';
-import '../../../node_modules/react-resizable/css/styles.css';
 
-import arrowdown from '../../images/arrowdown.svg';
-
-const GridLayout = require('react-grid-layout');
+import arrowdown from '@images/arrowdown.svg';
 
 const ResponsiveGridLayout = GridLayout.WidthProvider(GridLayout.Responsive);
 

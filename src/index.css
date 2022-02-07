@@ -1,3 +1,19 @@
+@import 'reset.css';
+
+:root {
+  /* Colors */
+  --color-pearl: #faf1e4;
+  --color-darkPearl: #dad2c7;
+  --color-red: #ed4e33;
+  --color-darkRed: #a04232;
+  --color-yellow: #edcd5b;
+  --color-darkGray-1: #0b0a09;
+  --color-darkGray-2: #2d2925;
+  --color-darkGray-3: #4f4740;
+  --color-darkGray-4: #70655c;
+  --color-darkGray-5: #918378;
+}
+
 body {
   margin: 0;
   background: #ececec;
@@ -45,7 +61,6 @@ body {
   margin: auto;
 
   background: #e5e5e5;
-  height: 20px;
   line-height: 20px;
   min-width: 72px;
   border-radius: 20px;

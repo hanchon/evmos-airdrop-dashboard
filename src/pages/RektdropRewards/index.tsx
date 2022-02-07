@@ -1,13 +1,10 @@
-import React from 'react';
 import './index.css';
 import '../../index.css';
-import '../../../node_modules/react-grid-layout/css/styles.css';
-import '../../../node_modules/react-resizable/css/styles.css';
 
+import GridLayout from 'react-grid-layout';
 import { Claim } from '@hanchon/evmosjs';
-import rektdropIcon from '../../images/rektdropIcon.svg';
 
-const GridLayout = require('react-grid-layout');
+import rektdropIcon from '@images/rektdropIcon.svg';
 
 const ResponsiveGridLayout = GridLayout.WidthProvider(GridLayout.Responsive);
 

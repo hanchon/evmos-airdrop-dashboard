@@ -1,11 +1,8 @@
-import React from 'react';
+import GridLayout from 'react-grid-layout';
+
 import './index.css';
 import '../../index.css';
-import '../../../node_modules/react-grid-layout/css/styles.css';
-import '../../../node_modules/react-resizable/css/styles.css';
 import { GlobalMissionStats, UserMissionStats } from 'src/types';
-
-const GridLayout = require('react-grid-layout');
 
 const ResponsiveGridLayout = GridLayout.WidthProvider(GridLayout.Responsive);
 

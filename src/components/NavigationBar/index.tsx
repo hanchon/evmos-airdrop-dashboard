@@ -1,6 +1,6 @@
 import './index.css';
-import logo from '../../images/logo.svg';
-import qrcode from '../../images/qrcode.svg';
+import logo from '@images/logo.svg';
+import qrcode from '@images/qrcode.svg';
 
 export default function NavigationBar(props: any) {
   const { address, pointCount, selectedPage, didSelectPage } = props;
