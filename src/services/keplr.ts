@@ -1,4 +1,4 @@
-import { chainId } from '../const';
+import { chainId } from '@constants';
 
 interface KeplrWindow extends Window {
   keplr: any;

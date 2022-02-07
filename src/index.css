@@ -15,8 +15,8 @@
 }
 
 body {
-  margin: 0;
-  background: #ececec;
+  /* margin: 0; */
+  background: var(--color-darkPearl);
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

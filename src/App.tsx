@@ -1,44 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 
-import type { Claim } from '@hanchon/evmosjs';
-
-// Components
-import NavigationBar from '@components/NavigationBar';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 // Pages
 import LandingPage from '@pages/Landing';
-import DashboardPage from '@pages/Dashboard';
-import MissionControlPage from '@pages/MissionControl';
-import RektdropRewardsPage from '@pages/RektdropRewards';
-import TestnetMissionsPage from '@pages/TestnetMissions';
 
-import {
-  getCompletedTasks,
-  getAnalytics,
-  getGlobalMissionStats,
-} from './services/missionsService';
-import MissionData from '@assets/missiondata';
-import type { GlobalMissionStats } from './types';
-import getRektDropInformation from './services/evmos';
+// Constants
+import { MISSION_CONTROLL_ROUTE } from '@constants/routes';
+import { WalletContext } from '@constants/contexts';
 
-// Global Styles for react-grid-layout
-import '../node_modules/react-grid-layout/css/styles.css';
-import '../node_modules/react-resizable/css/styles.css';
+// Components
+import InnerRoutes from './InnerRoutes';
 
 function App() {
-  const [page, setPage] = React.useState(0);
+  const navigate = useNavigate();
   const [userAddress, setUserAddress] = React.useState('');
-  const [completedTasks, setCompletedTasks] = React.useState([] as number[]);
-  const [rektDropClaims, setRektDropClaims] = React.useState([] as Claim[]);
-  const [rektDropError, setRektDropError] = React.useState('');
-  const [globalMissionStats, setGlobalMissionStats] = React.useState(
-    {} as GlobalMissionStats,
-  );
-
-  const userMissionStats = getAnalytics(
-    completedTasks,
-    Object.values(MissionData).flatMap(array => array),
-  );
 
   const updateKeplrState = (address: string | null): void => {
     if (!address) {
@@ -46,78 +22,35 @@ function App() {
       return;
     }
     setUserAddress(address);
-    setPage(3);
   };
 
-  async function getContent() {
-    const completedTasksResponse = getCompletedTasks(userAddress);
-    const rektDropInformationResponse = getRektDropInformation(userAddress);
-    const globalMissionStatsResposne = getGlobalMissionStats(userAddress);
-
-    setCompletedTasks(await completedTasksResponse);
-    setRektDropClaims((await rektDropInformationResponse).claims);
-    setRektDropError((await rektDropInformationResponse).error);
-    setGlobalMissionStats(await globalMissionStatsResposne);
-  }
+  // useEffect(() => {
+  //   if (userAddress) {
+  //     navigate(userAddress ? '/mission-control' : '', { replace: true });
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (userAddress) {
-      getContent();
+      navigate(MISSION_CONTROLL_ROUTE.path);
     }
   }, [userAddress]);
 
-  const pageContent = () => {
-    if (page === 0) {
-      return <LandingPage updateKeplrState={updateKeplrState} />;
-    }
-
-    if (page === 1) {
-      return (
-        <MissionControlPage
-          userMissionStats={userMissionStats}
-          globalMissionStats={globalMissionStats}
-        />
-      );
-    }
-
-    if (page === 2) {
-      return (
-        <RektdropRewardsPage
-          rektDropClaims={rektDropClaims}
-          rektDropError={rektDropError}
-        />
-      );
-    }
-
-    if (page === 3) {
-      return <TestnetMissionsPage />;
-    }
-
-    if (page === 4) {
-      return (
-        <DashboardPage
-          userAddress={userAddress}
-          userMissions={completedTasks}
-        />
-      );
-    }
-
-    return null;
-  };
+  const providerValue = useMemo(() => {
+    return { address: userAddress };
+  }, [userAddress]);
 
   return (
     <div className="page-base">
-      {page !== 0 && (
-        <NavigationBar
-          pointCount={userMissionStats.completedPoints}
-          selectedPage={page}
-          address={userAddress}
-          didSelectPage={(newPage: number) => {
-            setPage(newPage);
-          }}
-        />
-      )}
-      {pageContent()}
+      <WalletContext.Provider value={providerValue}>
+        <Routes>
+          <Route
+            path="/"
+            element={<LandingPage updateKeplrState={updateKeplrState} />}
+          />
+          <Route path="*" element={<InnerRoutes />} />
+        </Routes>
+      </WalletContext.Provider>
     </div>
   );
 }

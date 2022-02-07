@@ -1,8 +1,22 @@
-import GridLayout from 'react-grid-layout';
-
 import './index.css';
 import '../../index.css';
-import { GlobalMissionStats, UserMissionStats } from 'src/types';
+
+import { useContext, useEffect, useMemo, useState } from 'react';
+
+import GridLayout from 'react-grid-layout';
+
+// Constants
+import { WalletContext } from '@constants/contexts';
+import { GlobalMissionStats, UserMissionStats } from '@types';
+
+import MissionData from '@assets/missiondata';
+
+// Services
+import {
+  getCompletedTasks,
+  getAnalytics,
+  getGlobalMissionStats,
+} from '../../services/missionsService';
 
 const ResponsiveGridLayout = GridLayout.WidthProvider(GridLayout.Responsive);
 
@@ -31,13 +45,17 @@ const getLayoutForKeys = (keys: string[]) => {
   };
 };
 
-export interface MissionControlProps {
-  userMissionStats: UserMissionStats;
-  globalMissionStats: GlobalMissionStats;
-}
+export type MissionControlProps = {
+  userMissionStats?: UserMissionStats;
+  globalMissionStats?: GlobalMissionStats;
+};
 
 function MissionControlGrid(props: MissionControlProps) {
-  const { userMissionStats, globalMissionStats } = props;
+  const {
+    userMissionStats = {} as UserMissionStats,
+    globalMissionStats = {} as GlobalMissionStats,
+  } = props;
+
   const keys = ['1', '2', '3'];
   const layout = getLayoutForKeys(keys);
 
@@ -142,13 +160,43 @@ function MissionControlGrid(props: MissionControlProps) {
   );
 }
 
-export default function MissionControlPage(props: MissionControlProps) {
+export default function MissionControlPage() {
+  const { address } = useContext(WalletContext);
+  const [globalMissionStats, setGlobalMissionStats] =
+    useState<GlobalMissionStats>();
+  const [completedTasks, setCompletedTasks] = useState<number[]>([]);
+
+  const userMissionStats = useMemo(
+    () =>
+      getAnalytics(
+        completedTasks,
+        Object.values(MissionData).flatMap(array => array),
+      ),
+    [completedTasks],
+  );
+
+  useEffect(() => {
+    async function apiCalls() {
+      const globalMissionStatsResposne = getGlobalMissionStats(address);
+      const completedTasksResponse = getCompletedTasks(address);
+      setGlobalMissionStats(await globalMissionStatsResposne);
+      setCompletedTasks(await completedTasksResponse);
+    }
+    apiCalls();
+  }, []);
+
+  // useEffect(() => {
+  //   console.log('completedTasks:', completedTasks);
+  //   console.log('globalMissionStats:', globalMissionStats);
+  //   console.log('userMissionStats:', userMissionStats);
+  // }, [globalMissionStats, completedTasks, userMissionStats]);
+
   return (
     <div className="page-base page-content">
       <div className="page--header">Mission Control</div>
       <MissionControlGrid
-        userMissionStats={props.userMissionStats}
-        globalMissionStats={props.globalMissionStats}
+        userMissionStats={userMissionStats}
+        globalMissionStats={globalMissionStats}
       />
     </div>
   );

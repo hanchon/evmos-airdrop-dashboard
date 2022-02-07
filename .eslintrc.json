@@ -51,6 +51,10 @@
       "extends": ["airbnb-typescript"],
       "parserOptions": {
         "project": ["./tsconfig.json"]
+      },
+      "rules": {
+        "indent": "off",
+        "@typescript-eslint/indent": ["off"]
       }
     }
   ]

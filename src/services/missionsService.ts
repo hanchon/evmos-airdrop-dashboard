@@ -7,7 +7,7 @@ import {
   Task,
   UserMissionStats,
 } from 'src/types';
-import { apiDomain } from '../const';
+import { apiDomain } from '@constants';
 
 export async function getCompletedTasks(address: string): Promise<number[]> {
   const res = await axios.get(`${apiDomain}/user_missions/${address}`);

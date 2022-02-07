@@ -1,10 +1,21 @@
 import './index.css';
 import '../../index.css';
+import { useContext, useEffect, useState } from 'react';
 
+// Components
 import GridLayout from 'react-grid-layout';
-import { Claim } from '@hanchon/evmosjs';
 
+// Assets
 import rektdropIcon from '@images/rektdropIcon.svg';
+
+// Types
+import type { Claim } from '@hanchon/evmosjs';
+
+// Constants
+import { WalletContext } from '@constants/contexts';
+
+// Utils
+import getRektDropInformation from '../../services/evmos';
 
 const ResponsiveGridLayout = GridLayout.WidthProvider(GridLayout.Responsive);
 
@@ -33,13 +44,9 @@ const getLayoutForKeys = (keys: string[]) => {
   };
 };
 
-interface RektDropGridProps {
+type RektDropGridProps = {
   rektDropClaims: Claim[];
-}
-
-interface RektDropProps extends RektDropGridProps {
-  rektDropError: string;
-}
+};
 
 function RektdropRewardsGrid(props: RektDropGridProps) {
   const { rektDropClaims } = props;
@@ -109,14 +116,28 @@ function RektdropRewardsGrid(props: RektDropGridProps) {
   );
 }
 
-export default function RektdropRewardsPage(props: RektDropProps) {
+export default function RektdropRewardsPage() {
+  const { address } = useContext(WalletContext);
+  const [rektDropClaims, setRektDropClaims] = useState<Claim[]>([]);
+  const [rektDropError, setRektDropError] = useState('');
+
+  useEffect(() => {
+    async function apiCall() {
+      const rektDropInformationResponse = getRektDropInformation(address);
+      setRektDropClaims((await rektDropInformationResponse).claims);
+      setRektDropError((await rektDropInformationResponse).error);
+    }
+
+    apiCall();
+  }, []);
+
   return (
     <div className="page-base page-content">
       <div className="page--header">Rektdrop Rewards</div>
-      {props.rektDropError ? (
-        <p className="rekt-error">{props.rektDropError} </p>
+      {rektDropError ? (
+        <p className="rekt-error">{rektDropError} </p>
       ) : (
-        <RektdropRewardsGrid rektDropClaims={props.rektDropClaims} />
+        <RektdropRewardsGrid rektDropClaims={rektDropClaims} />
       )}
     </div>
   );
