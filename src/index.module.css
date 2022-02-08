@@ -1,0 +1,21 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 95vw;
+  margin: 48px auto 72px auto;
+
+  @media (--tablet-viewport) {
+    width: 90vw;
+  }
+
+  @media (--desktop-viewport) {
+    width: 80vw;
+    max-width: 1440px;
+  }
+}

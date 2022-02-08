@@ -1,0 +1,11 @@
+.base {
+  background: red;
+
+  @media (--tablet-viewport) {
+    background: yellow;
+  }
+
+  @media (--desktop-viewport) {
+    background: green;
+  }
+}

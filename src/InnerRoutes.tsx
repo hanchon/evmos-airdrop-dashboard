@@ -10,6 +10,9 @@ import MissionData from '@assets/missiondata';
 import { WalletContext } from '@constants/contexts';
 import { ALL_ROUTES } from '@constants/routes';
 
+// Styles
+import css from './index.module.css';
+
 import { getCompletedTasks, getAnalytics } from './services/missionsService';
 
 export default function InnerRoutes() {
@@ -37,20 +40,21 @@ export default function InnerRoutes() {
   return (
     <>
       <NavigationBar pointCount={userMissionStats.completedPoints} />
-
-      <Routes>
-        {ALL_ROUTES.map(({ path, Component }) => (
-          <Route key={path} path={path} element={<Component />} />
-        ))}
-        <Route
-          path="*"
-          element={
-            <main style={{ padding: '1rem' }}>
-              <p>There's nothing here!</p>
-            </main>
-          }
-        />
-      </Routes>
+      <div className={css.content}>
+        <Routes>
+          {ALL_ROUTES.map(({ path, Component }) => (
+            <Route key={path} path={path} element={<Component />} />
+          ))}
+          <Route
+            path="*"
+            element={
+              <main style={{ padding: '1rem' }}>
+                <p>404 Page</p>
+              </main>
+            }
+          />
+        </Routes>
+      </div>
     </>
   );
 }

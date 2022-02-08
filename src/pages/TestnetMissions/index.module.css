@@ -1,6 +1,4 @@
-/* Duplicate of t--flex-row */
-/* But modified for mobile */
-.t--header {
+/* .t--header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -49,8 +47,6 @@
 
   background: #ffffff;
   padding: 24px 0px 0px 0px;
-
-  box-sizing: border-box;
 }
 
 .t--card-completed {
@@ -96,8 +92,6 @@
 
   padding: 16px 18px;
   background: #000;
-
-  box-sizing: border-box;
 }
 
 .t--card--completed--title {
@@ -147,7 +141,6 @@
   color: #000;
 }
 
-/* Mobile Phone CSS */
 @media screen and (max-width: 480px) {
   .t--header {
     flex-direction: column;
@@ -156,4 +149,4 @@
   .t--view-buttons {
     margin-top: 12px;
   }
-}
+} */

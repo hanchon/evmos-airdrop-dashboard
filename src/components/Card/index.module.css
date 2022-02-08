@@ -1,0 +1,13 @@
+.card {
+  background-color: var(--color-darkGray-2);
+  border-radius: 16px;
+  padding: 24px 32px;
+}
+
+.title {
+  font-size: 18px;
+  color: var(--color-pearl);
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 16px;
+}

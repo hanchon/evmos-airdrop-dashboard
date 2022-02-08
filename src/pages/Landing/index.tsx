@@ -1,8 +1,9 @@
-import './index.css';
-import '../../index.css';
 import logo from '@images/logo.svg';
 import walletButton from '@images/walletButton.svg';
 import { connectKeplrWallet } from '../../services/keplr';
+
+// Styles
+import css from './index.module.css';
 
 export interface LandingPageProps {
   updateKeplrState: (address: string | null) => void;
@@ -17,7 +18,7 @@ export default function LandingPage(props: LandingPageProps) {
   }
 
   return (
-    <div className="page-base">
+    <div className={css.base}>
       <div className="page-body">
         <img src={logo} alt="Evmos" className="la--logo" />
         <h1 className="la--title">Rektdrop Rewards</h1>

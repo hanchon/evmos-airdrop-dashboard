@@ -11,16 +11,16 @@ type Page = {
   Component: React.LazyExoticComponent<() => JSX.Element>;
 };
 
-export const REWARDS_PAGE_ROUTE: Page = {
-  name: 'Rektdrop Rewards',
-  path: 'rewards',
-  Component: RektdropRewardsPage,
-};
-
 export const MISSION_CONTROLL_ROUTE: Page = {
   name: 'Mission Control',
   path: 'mission-control',
   Component: MissionControlPage,
+};
+
+export const REWARDS_PAGE_ROUTE: Page = {
+  name: 'Rektdrop Rewards',
+  path: 'rewards',
+  Component: RektdropRewardsPage,
 };
 
 export const MISSIONS_ROUTE: Page = {

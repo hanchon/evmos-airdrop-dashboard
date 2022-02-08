@@ -1,12 +1,10 @@
-.r--card {
+/* .r--card {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
   background: #ffffff;
   padding: 36px 24px;
-
-  box-sizing: border-box;
 }
 
 .r--page-base {
@@ -85,7 +83,6 @@
   color: red;
 }
 
-/* Mobile Phone CSS */
 @media screen and (max-width: 768px) {
   .r--card {
     flex-direction: column;
@@ -110,4 +107,4 @@
   .r--card--icon-text-container {
     flex-direction: column;
   }
-}
+} */

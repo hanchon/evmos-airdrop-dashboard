@@ -1,7 +1,3 @@
-import '../Landing/index.css';
-import './index.css';
-import '../../index.css';
-
 // Components
 import GridLayout from 'react-grid-layout';
 

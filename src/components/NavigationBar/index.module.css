@@ -1,28 +1,23 @@
-.n {
+.wrapper {
   width: 100%;
   padding: 36px;
 
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
-  box-sizing: border-box;
 }
 
-.n--logo {
+.logo {
   height: 28px;
 }
 
-.n--page-container {
+.pageContainer {
   display: flex;
-  flex-direction: row;
   justify-content: center;
-
   flex: 1;
 }
 
-.n--page {
+.page {
   margin-left: 16px;
 
   padding: 16px 12px;
@@ -32,21 +27,17 @@
   cursor: pointer;
 }
 
-.n--page-selected {
-  background: #fff;
-}
-
-.n--address {
+.address {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.n--address--points {
+.addressPoints {
   background: #d5d5d5;
 }
 
-.n--address--qr {
+.addressQr {
   margin-left: 12px;
 
   background: #d5d5d5;
@@ -55,7 +46,7 @@
   border-radius: 20px;
 }
 
-.n--address--wallet {
+.addressWallet {
   margin-left: 8px;
   font-weight: 700;
   font-size: 14px;
@@ -68,18 +59,51 @@
     flex-direction: column;
   }
 
-  .n--logo {
+  .logo {
     height: 24px;
   }
 
-  .n--page {
+  .page {
     margin-top: 12px;
     padding: 12px 8px;
 
     text-align: center;
   }
 
-  .n--address {
+  .address {
     margin-top: 12px;
   }
 }
+
+/* ------------- */
+.navLink {
+  color: var(--color-pearl);
+  font-weight: bold;
+  background-color: transparent;
+
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+
+  outline-offset: 5px;
+  padding: 12px 16px;
+  border-radius: 500px;
+
+  border: 1px solid transparent;
+
+  &.isActive {
+    border-color: var(--color-pearl);
+  }
+
+  @media (--small-viewport) {
+    background: blue;
+  }
+}
+
+/* .navLink:focus {
+  outline: 1px solid;
+} */
+
+/* .navLink.isActive {
+  border-color: var(--color-pearl);
+} */

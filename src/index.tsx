@@ -6,11 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 // Global Styles
-import './index.css';
-
-// Global Styles for react-grid-layout
-import '../node_modules/react-grid-layout/css/styles.css';
-import '../node_modules/react-resizable/css/styles.css';
+import './globals.css';
 
 ReactDOM.render(
   <React.StrictMode>

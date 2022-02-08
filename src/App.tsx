@@ -12,6 +12,9 @@ import { WalletContext } from '@constants/contexts';
 // Components
 import InnerRoutes from './InnerRoutes';
 
+// Styles
+import css from './index.module.css';
+
 function App() {
   const navigate = useNavigate();
   const [userAddress, setUserAddress] = React.useState('');
@@ -41,7 +44,7 @@ function App() {
   }, [userAddress]);
 
   return (
-    <div className="page-base">
+    <div className={css.wrapper}>
       <WalletContext.Provider value={providerValue}>
         <Routes>
           <Route
