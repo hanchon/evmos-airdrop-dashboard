@@ -5,8 +5,9 @@ module.exports = {
       importFrom: [
         {
           customMedia: {
-            '--tablet-viewport': '(min-width: 480px)',
+            '--tablet-viewport': '(min-width: 767px)',
             '--desktop-viewport': '(min-width: 1024px)',
+            '--has-hover': '(hover: hover)',
           },
         },
       ],

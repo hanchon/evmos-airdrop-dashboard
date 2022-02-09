@@ -1,0 +1,74 @@
+.backdrop {
+  & > * {
+    position: absolute;
+    inset: 0;
+  }
+}
+
+.page {
+  z-index: 1;
+}
+
+.mWrapper {
+  overflow: hidden;
+  z-index: 0;
+}
+
+.m {
+  --width: 200%;
+
+  position: absolute;
+  width: var(--width);
+  bottom: 0;
+  left: calc((100% - var(--width)) / 2);
+  max-width: none;
+
+  @media (--tablet-viewport) {
+    --width: 120%;
+  }
+}
+
+.m1 {
+  fill: var(--color-darkGray-1);
+  z-index: 4;
+}
+
+.m2 {
+  fill: var(--color-darkGray-2);
+  z-index: 3;
+}
+
+.m3 {
+  fill: var(--color-darkGray-3);
+  z-index: 2;
+}
+
+.m4 {
+  fill: var(--color-darkGray-4);
+  z-index: 1;
+}
+
+.sun {
+  --width: 80vh;
+  --top: 40%;
+  --right: -35%;
+
+  position: absolute;
+  height: auto;
+  width: var(--width);
+  fill: var(--color-pearl);
+  top: var(--top);
+  right: var(--right);
+  opacity: 20%;
+
+  @media (--tablet-viewport) {
+    --top: -30%;
+    --right: -10%;
+  }
+
+  @media (--desktop-viewport) {
+    --width: 90vh;
+    --top: -40%;
+    --right: -20%;
+  }
+}

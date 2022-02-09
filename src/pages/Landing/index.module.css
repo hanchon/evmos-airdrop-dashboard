@@ -1,11 +1,99 @@
 .base {
-  background: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 100vh;
+  color: var(--color-pearl);
+  margin: auto;
 
   @media (--tablet-viewport) {
-    background: yellow;
+    /* background: yellow; */
   }
 
   @media (--desktop-viewport) {
-    background: green;
+    /* background: green; */
+  }
+}
+
+.logo {
+  height: 44px;
+  width: auto;
+  margin-top: auto;
+  margin-bottom: 28px;
+
+  @media (--tablet-viewport) {
+    height: 52px;
+    margin-top: initial;
+  }
+
+  @media (--desktop-viewport) {
+    height: 56px;
+  }
+}
+
+.h1 {
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 64px;
+  line-height: 1;
+
+  text-align: center;
+  margin-bottom: 40px;
+
+  @media (--tablet-viewport) {
+    font-size: 100px;
+  }
+
+  @media (--desktop-viewport) {
+    font-size: 124px;
+  }
+}
+
+.q {
+  display: inline-block;
+  /* transition: transform 1s var(--ease-elastic);
+  transform-origin: center 80px; */
+}
+
+/* .rect {
+  transform: rotate(180deg);
+} */
+
+.bodyText {
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+
+  max-width: 440px;
+  margin-bottom: 32px;
+}
+
+.buttonsWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  width: 90%;
+  margin-bottom: 50px;
+  margin-top: auto;
+
+  @supports not (gap: 20px) {
+    & * + * {
+      margin-top: 20px;
+    }
+  }
+
+  @media (--tablet-viewport) {
+    flex-direction: row;
+    margin-top: initial;
+
+    @supports not (gap: 20px) {
+      & * + * {
+        margin-left: 20px;
+      }
+    }
   }
 }

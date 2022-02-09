@@ -9,4 +9,7 @@
   --color-darkGray-3: #4f4740;
   --color-darkGray-4: #70655c;
   --color-darkGray-5: #918378;
+
+  /*  */
+  --ease-elastic: cubic-bezier(0.41, 1.93, 0.66, 0.79);
 }

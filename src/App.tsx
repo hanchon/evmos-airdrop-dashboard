@@ -14,6 +14,7 @@ import InnerRoutes from './InnerRoutes';
 
 // Styles
 import css from './index.module.css';
+import Backdrop from '@components/Backdrop';
 
 function App() {
   const navigate = useNavigate();
@@ -46,13 +47,15 @@ function App() {
   return (
     <div className={css.wrapper}>
       <WalletContext.Provider value={providerValue}>
-        <Routes>
-          <Route
-            path="/"
-            element={<LandingPage updateKeplrState={updateKeplrState} />}
-          />
-          <Route path="*" element={<InnerRoutes />} />
-        </Routes>
+        <Backdrop>
+          <Routes>
+            <Route
+              path="/"
+              element={<LandingPage updateKeplrState={updateKeplrState} />}
+            />
+            <Route path="*" element={<InnerRoutes />} />
+          </Routes>
+        </Backdrop>
       </WalletContext.Provider>
     </div>
   );

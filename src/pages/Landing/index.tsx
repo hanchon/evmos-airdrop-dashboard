@@ -1,9 +1,13 @@
-import logo from '@images/logo.svg';
-import walletButton from '@images/walletButton.svg';
+import Logo from '@images/Logo';
+
+import Button from '@components/Button';
+
 import { connectKeplrWallet } from '../../services/keplr';
 
 // Styles
 import css from './index.module.css';
+
+import WalletIcon from '@images/icons/WalletIcon';
 
 export interface LandingPageProps {
   updateKeplrState: (address: string | null) => void;
@@ -19,20 +23,24 @@ export default function LandingPage(props: LandingPageProps) {
 
   return (
     <div className={css.base}>
-      <div className="page-body">
-        <img src={logo} alt="Evmos" className="la--logo" />
-        <h1 className="la--title">Rektdrop Rewards</h1>
-        <p className="la--body">
-          Nulla facilisi. Nam accumsan rhoncus justo vel faucibus. Curabitur ut
-          libero vitae tellus fringilla ultricies. Pellentesque ullamcorper
-          felis at tincidunt mattis.
-        </p>
-        <div
-          onClick={connectKeplrAndUpdateState}
-          onKeyDown={connectKeplrAndUpdateState}
-        >
-          <img src={walletButton} alt="Connect Wallet" className="la--wallet" />
-        </div>
+      <Logo className={css.logo} />
+
+      <h1 className={css.h1}>
+        Got rekt<span className={css.q}>?</span>
+      </h1>
+      <p className={css.bodyText}>
+        Nulla facilisi. Nam accumsan rhoncus justo vel faucibus. Curabitur ut
+        libero vitae tellus fringilla ultricies.
+      </p>
+
+      <div className={css.buttonsWrapper}>
+        <Button Icon={WalletIcon} onClick={() => connectKeplrAndUpdateState()}>
+          Connect Wallet
+        </Button>
+
+        <Button kind="secondary" onClick={() => connectKeplrAndUpdateState()}>
+          Enter
+        </Button>
       </div>
     </div>
   );
