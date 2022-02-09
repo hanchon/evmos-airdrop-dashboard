@@ -1,81 +1,35 @@
 .wrapper {
-  width: 100%;
-  padding: 36px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 32px;
+  margin-bottom: 120px;
 }
 
 .logo {
-  height: 28px;
+  color: var(--color-pearl);
+  flex: 0 0 auto;
 }
 
-.pageContainer {
+.navWrapper {
+  --gap: 32px;
+
   display: flex;
   justify-content: center;
-  flex: 1;
-}
+  flex: 1 0 auto;
+  gap: var(--gap);
 
-.page {
-  margin-left: 16px;
-
-  padding: 16px 12px;
-  font-weight: 700;
-  font-size: 14px;
-
-  cursor: pointer;
-}
-
-.address {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.addressPoints {
-  background: #d5d5d5;
-}
-
-.addressQr {
-  margin-left: 12px;
-
-  background: #d5d5d5;
-  padding: 6px;
-  height: 20px;
-  border-radius: 20px;
-}
-
-.addressWallet {
-  margin-left: 8px;
-  font-weight: 700;
-  font-size: 14px;
-}
-
-/* Mobile Phone CSS */
-@media screen and (max-width: 480px) {
-  .n {
-    padding: 36px 12px 0px 12px;
-    flex-direction: column;
-  }
-
-  .logo {
-    height: 24px;
-  }
-
-  .page {
-    margin-top: 12px;
-    padding: 12px 8px;
-
-    text-align: center;
-  }
-
-  .address {
-    margin-top: 12px;
+  @supports not (gap: var(--gap)) {
+    & * + * {
+      margin-left: var(--gap);
+    }
   }
 }
 
-/* ------------- */
+.walletWrapper {
+  flex: 0 0 auto;
+}
+
 .navLink {
   color: var(--color-pearl);
   font-weight: bold;

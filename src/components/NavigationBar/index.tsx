@@ -1,19 +1,21 @@
 import { useContext, useMemo, useCallback } from 'react';
 
 // Images
-import logo from '@images/logo.svg';
+import Logo from '@images/Logo';
 import qrcode from '@images/qrcode.svg';
 
 // Components
 import { NavLink } from 'react-router-dom';
 
 // Constants
-import { NAVIGATION_LINKS } from '@constants/routes';
+import { MISSION_CONTROLL_ROUTE, NAVIGATION_LINKS } from '@constants/routes';
 import { WalletContext } from '@constants/contexts';
 
 // Styles
 import cn from 'classnames';
 import css from './index.module.css';
+import Button from '@components/Button';
+import WalletIcon from '@images/icons/WalletIcon';
 
 export default function NavigationBar(props: any) {
   const { address } = useContext(WalletContext);
@@ -39,9 +41,11 @@ export default function NavigationBar(props: any) {
 
   return (
     <div className={css.wrapper}>
-      <img src={logo} alt="Evmos" className={css.logo} />
+      <NavLink className={css.logo} to={MISSION_CONTROLL_ROUTE.path}>
+        <Logo />
+      </NavLink>
 
-      <div className={css.pageContainer}>
+      <div className={css.navWrapper}>
         {NAVIGATION_LINKS.map(({ name, path: to }) => (
           <NavLink className={getNavClassName} to={to} key={to}>
             {name}
@@ -49,11 +53,14 @@ export default function NavigationBar(props: any) {
         ))}
       </div>
 
-      {/* <div className={address}>
-        <div className={cardPointTag addressPoints}>{`${pointCount} PTS`}</div>
+      <div className={css.walletWrapper}>
+        <Button Icon={WalletIcon} kind="secondary">
+          Connect Wallet
+        </Button>
+        {/* <div className={cardPointTag addressPoints}>{`${pointCount} PTS`}</div>
         <img src={qrcode} alt="Wallet Address" className={addressQr} />
-        <div className={addressWallet}>{shortenedAddress}</div>
-      </div> */}
+        <div className={addressWallet}>{shortenedAddress}</div> */}
+      </div>
     </div>
   );
 }

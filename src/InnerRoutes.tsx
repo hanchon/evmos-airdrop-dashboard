@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 // Components
@@ -41,19 +41,21 @@ export default function InnerRoutes() {
     <>
       <NavigationBar pointCount={userMissionStats.completedPoints} />
       <div className={css.content}>
-        <Routes>
-          {ALL_ROUTES.map(({ path, Component }) => (
-            <Route key={path} path={path} element={<Component />} />
-          ))}
-          <Route
-            path="*"
-            element={
-              <main style={{ padding: '1rem' }}>
-                <p>404 Page</p>
-              </main>
-            }
-          />
-        </Routes>
+        <React.Suspense fallback={<></>}>
+          <Routes>
+            {ALL_ROUTES.map(({ path, Component }) => (
+              <Route key={path} path={path} element={<Component />} />
+            ))}
+            <Route
+              path="*"
+              element={
+                <main style={{ padding: '1rem' }}>
+                  <p>404 Page</p>
+                </main>
+              }
+            />
+          </Routes>
+        </React.Suspense>
       </div>
     </>
   );

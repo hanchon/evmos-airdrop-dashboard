@@ -11,9 +11,7 @@ import './globals.css';
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <React.Suspense fallback={<>...</>}>
-        <App />
-      </React.Suspense>
+      <App />
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),

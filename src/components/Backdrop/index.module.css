@@ -1,4 +1,17 @@
+:root {
+  --page-start-h: 70vh;
+
+  @media (--tablet-viewport) {
+    --page-start-h: 75vh;
+  }
+}
+
 .backdrop {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+
   & > * {
     position: absolute;
     inset: 0;
@@ -7,11 +20,37 @@
 
 .page {
   z-index: 1;
+  overflow: auto;
+  overflow-x: hidden;
+
+  &.inner {
+    background: linear-gradient(
+      0deg,
+      var(--color-darkGray-1) 0%,
+      var(--color-darkGray-1) calc(var(--page-start-h) + 2vh),
+      transparent calc(var(--page-start-h) + 2vh),
+      transparent 100%
+    );
+  }
 }
 
 .mWrapper {
   overflow: hidden;
   z-index: 0;
+}
+
+.inner {
+  & .m {
+    --width: 200%;
+
+    bottom: var(--page-start-h);
+    transform: scaleY(0.7);
+    transform-origin: bottom;
+
+    @media (--tablet-viewport) {
+      --width: 120%;
+    }
+  }
 }
 
 .m {

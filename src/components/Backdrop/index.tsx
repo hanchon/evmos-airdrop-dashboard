@@ -1,16 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
 
-import { Routes, Route, useNavigate } from 'react-router-dom';
-
-// Pages
-import LandingPage from '@pages/Landing';
-
-// Constants
-import { MISSION_CONTROLL_ROUTE } from '@constants/routes';
-import { WalletContext } from '@constants/contexts';
-
-// Components
-import InnerRoutes from '../../InnerRoutes';
+import { useLocation } from 'react-router-dom';
 
 // Styles
 import cn from 'classnames';
@@ -22,10 +12,23 @@ import MountainFour from './MountainFour';
 import Sun from './Sun';
 
 const Backdrop: React.FC<React.HTMLProps<HTMLDivElement>> = ({ children }) => {
+  const location = useLocation();
+  const isInnerPage = useMemo(() => location.pathname !== '/', [location]);
+
+  const pageClasses = cn({
+    [css.page]: true,
+    [css.inner]: isInnerPage,
+  });
+
+  const backdropClasses = cn({
+    [css.mWrapper]: true,
+    [css.inner]: isInnerPage,
+  });
+
   return (
     <div className={css.backdrop}>
-      <div className={css.page}>{children}</div>
-      <div className={css.mWrapper}>
+      <div className={pageClasses}>{children}</div>
+      <div className={backdropClasses}>
         <MountainOne preserveAspectRatio="none" className={cn(css.m, css.m1)} />
         <MountainTwo preserveAspectRatio="none" className={cn(css.m, css.m2)} />
         <MountainThree
@@ -36,7 +39,7 @@ const Backdrop: React.FC<React.HTMLProps<HTMLDivElement>> = ({ children }) => {
           preserveAspectRatio="none"
           className={cn(css.m, css.m4)}
         />
-        <Sun className={cn(css.sun)} />
+        {!isInnerPage ? <Sun className={cn(css.sun)} /> : null}
       </div>
     </div>
   );

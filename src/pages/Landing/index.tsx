@@ -1,13 +1,14 @@
 import Logo from '@images/Logo';
 
-import Button from '@components/Button';
+import Button, { LinkButton } from '@components/Button';
+
+import WalletIcon from '@images/icons/WalletIcon';
+import { MISSION_CONTROLL_ROUTE } from '@constants/routes';
 
 import { connectKeplrWallet } from '../../services/keplr';
 
 // Styles
 import css from './index.module.css';
-
-import WalletIcon from '@images/icons/WalletIcon';
 
 export interface LandingPageProps {
   updateKeplrState: (address: string | null) => void;
@@ -38,9 +39,9 @@ export default function LandingPage(props: LandingPageProps) {
           Connect Wallet
         </Button>
 
-        <Button kind="secondary" onClick={() => connectKeplrAndUpdateState()}>
+        <LinkButton kind="secondary" to={MISSION_CONTROLL_ROUTE.path}>
           Enter
-        </Button>
+        </LinkButton>
       </div>
     </div>
   );

@@ -48,8 +48,8 @@ export default function MissionControlPage() {
   // }, [globalMissionStats, completedTasks, userMissionStats]);
 
   return (
-    <div className="page-base page-content">
-      <div className="page--header">Mission Control</div>
+    <>
+      {/* <div className="page--header">Mission Control</div> */}
 
       <Card title="Foo title" aria-label="This is a foo card">
         Foo
@@ -62,6 +62,6 @@ export default function MissionControlPage() {
       <Card title="Foo title" aria-label="This is a foo card">
         Foo
       </Card>
-    </div>
+    </>
   );
 }

@@ -45,9 +45,9 @@ function App() {
   }, [userAddress]);
 
   return (
-    <div className={css.wrapper}>
-      <WalletContext.Provider value={providerValue}>
-        <Backdrop>
+    <WalletContext.Provider value={providerValue}>
+      <Backdrop>
+        <React.Suspense fallback={<></>}>
           <Routes>
             <Route
               path="/"
@@ -55,9 +55,9 @@ function App() {
             />
             <Route path="*" element={<InnerRoutes />} />
           </Routes>
-        </Backdrop>
-      </WalletContext.Provider>
-    </div>
+        </React.Suspense>
+      </Backdrop>
+    </WalletContext.Provider>
   );
 }
 
