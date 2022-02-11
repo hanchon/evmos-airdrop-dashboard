@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
 
 // Assets
 import Logo from '@images/Logo';
@@ -6,6 +6,7 @@ import WalletIcon from '@images/icons/WalletIcon';
 
 // Components
 import Button, { LinkButton } from '@components/Button';
+import { WalletContext } from '@providers/WalletProvider';
 
 // Constants
 import { MISSION_CONTROLL_ROUTE } from '@constants/routes';
@@ -14,20 +15,9 @@ import { MISSION_CONTROLL_ROUTE } from '@constants/routes';
 import cn from 'classnames';
 import css from './index.module.css';
 
-import { connectKeplrWallet } from '../../services/keplr';
-
-export interface LandingPageProps {
-  updateKeplrState: (address: string | null) => void;
-}
-
-export default function LandingPage(props: LandingPageProps) {
+export default function LandingPage() {
+  const { openWalletModal } = useContext(WalletContext);
   const [count, setCount] = useState(0);
-  const { updateKeplrState } = props;
-
-  async function connectKeplrAndUpdateState() {
-    const address = await connectKeplrWallet();
-    updateKeplrState(address);
-  }
 
   const qClasses = useMemo(
     () =>
@@ -56,7 +46,7 @@ export default function LandingPage(props: LandingPageProps) {
       </p>
 
       <div className={css.buttonsWrapper}>
-        <Button Icon={WalletIcon} onClick={() => connectKeplrAndUpdateState()}>
+        <Button Icon={WalletIcon} onClick={() => openWalletModal()}>
           Connect Wallet
         </Button>
 

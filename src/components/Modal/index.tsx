@@ -1,21 +1,40 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
+import { useEffect, useRef, useState, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 
 import Text from '@components/Text';
 import CloseIcon from '@images/icons/CloseIcon';
 
 import cn from 'classnames';
-import { useEffect, useRef } from 'react';
-import { createPortal } from 'react-dom';
 import css from './index.module.css';
 
-export type ModalProps = React.HTMLProps<HTMLDivElement> & {
+export type ModalDOMProps = React.HTMLProps<HTMLDivElement>;
+export type ModalProps = {
   isOpen: boolean;
   onClose: () => void;
   title: string;
 };
 
-const Modal: React.FC<ModalProps> = ({
+export const useModal = (
+  defaultValue: boolean = false,
+): [any, Pick<ModalProps, 'isOpen' | 'onClose'>] => {
+  const [isOpen, setIsOpen] = useState(defaultValue);
+
+  const close = useCallback(() => setIsOpen(false), []);
+  const open = useCallback(() => setIsOpen(true), []);
+
+  return [
+    {
+      isOpen,
+      open,
+      close,
+    },
+    { isOpen, onClose: close },
+  ];
+};
+
+const Modal: React.FC<ModalDOMProps & ModalProps> = ({
   title,
   isOpen,
   onClose,
@@ -41,6 +60,12 @@ const Modal: React.FC<ModalProps> = ({
     window.addEventListener('keydown', escapeHandler);
 
     return () => window.removeEventListener('keydown', escapeHandler);
+  }, [isOpen]);
+
+  useEffect(() => {
+    document.getElementsByTagName('body')[0].style.overflow = isOpen
+      ? 'hidden'
+      : 'auto';
   }, [isOpen]);
 
   if (!el$ || !isOpen) {

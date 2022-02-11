@@ -8,7 +8,7 @@ import StatCard from '@components/StatCard';
 import Info from '@components/Info';
 
 // Constants
-import { WalletContext } from '@constants/contexts';
+import { WalletContext } from '@providers/WalletProvider';
 import { GlobalMissionStats, UserMissionStats } from '@types';
 
 // Icons

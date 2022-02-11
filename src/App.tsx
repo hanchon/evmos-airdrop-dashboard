@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
@@ -7,7 +7,7 @@ import LandingPage from '@pages/Landing';
 
 // Constants
 import { MISSION_CONTROLL_ROUTE } from '@constants/routes';
-import { WalletContext } from '@constants/contexts';
+import WalletProvider, { WalletContext } from '@providers/WalletProvider';
 
 // Components
 import Backdrop from '@components/Backdrop';
@@ -19,16 +19,8 @@ import InnerRoutes from './InnerRoutes';
 // import css from './index.module.css';
 
 function App() {
+  const { address } = useContext(WalletContext);
   const navigate = useNavigate();
-  const [userAddress, setUserAddress] = React.useState('');
-
-  const updateKeplrState = (address: string | null): void => {
-    if (!address) {
-      // TODO: error handling
-      return;
-    }
-    setUserAddress(address);
-  };
 
   // useEffect(() => {
   //   if (userAddress) {
@@ -37,29 +29,22 @@ function App() {
   // }, []);
 
   useEffect(() => {
-    if (userAddress) {
+    if (address) {
       navigate(MISSION_CONTROLL_ROUTE.path);
     }
-  }, [userAddress]);
-
-  const providerValue = useMemo(() => {
-    return { address: userAddress };
-  }, [userAddress]);
+  }, [address]);
 
   return (
-    <WalletContext.Provider value={providerValue}>
+    <WalletProvider>
       <Backdrop>
         <React.Suspense fallback={<>Loading...</>}>
           <Routes>
-            <Route
-              path="/"
-              element={<LandingPage updateKeplrState={updateKeplrState} />}
-            />
+            <Route path="/" element={<LandingPage />} />
             <Route path="*" element={<InnerRoutes />} />
           </Routes>
         </React.Suspense>
       </Backdrop>
-    </WalletContext.Provider>
+    </WalletProvider>
   );
 }
 

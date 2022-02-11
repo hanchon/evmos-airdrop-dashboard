@@ -15,7 +15,7 @@ import AstronautIcon from '@images/icons/AstronautIcon';
 import type { Claim } from '@hanchon/evmosjs';
 
 // Constants
-import { WalletContext } from '@constants/contexts';
+import { WalletContext } from '@providers/WalletProvider';
 
 // Utils
 import getRektDropInformation from '../../services/evmos';

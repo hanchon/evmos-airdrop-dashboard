@@ -7,7 +7,7 @@ import NavigationBar from '@components/NavigationBar';
 import MissionData from '@assets/missiondata';
 
 // Constants
-import { WalletContext } from '@constants/contexts';
+import { WalletContext } from '@providers/WalletProvider';
 import { ALL_ROUTES } from '@constants/routes';
 
 // Styles

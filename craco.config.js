@@ -14,6 +14,7 @@ module.exports = {
       '@components': path.resolve(__dirname, 'src/components/'),
       '@constants': path.resolve(__dirname, 'src/constants/'),
       '@pages': path.resolve(__dirname, 'src/pages/'),
+      '@providers': path.resolve(__dirname, 'src/providers/'),
       '@types': path.resolve(__dirname, 'src/types/'),
     },
   },
