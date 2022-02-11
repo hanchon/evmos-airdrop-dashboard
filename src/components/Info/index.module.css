@@ -1,0 +1,4 @@
+.statWrapper {
+  display: flex;
+  flex-direction: column;
+}

@@ -8,13 +8,16 @@ import { MISSION_CONTROLL_ROUTE } from '@constants/routes';
 import { connectKeplrWallet } from '../../services/keplr';
 
 // Styles
+import cn from 'classnames';
 import css from './index.module.css';
+import { useMemo, useState } from 'react';
 
 export interface LandingPageProps {
   updateKeplrState: (address: string | null) => void;
 }
 
 export default function LandingPage(props: LandingPageProps) {
+  const [count, setCount] = useState(0);
   const { updateKeplrState } = props;
 
   async function connectKeplrAndUpdateState() {
@@ -22,12 +25,26 @@ export default function LandingPage(props: LandingPageProps) {
     updateKeplrState(address);
   }
 
+  const qClasses = useMemo(
+    () =>
+      cn({
+        [css.q]: true,
+        [css.discover]: count > 0 && count < 3,
+        [css.rekt]: count >= 3,
+      }),
+    [count],
+  );
+
   return (
     <div className={css.base}>
       <Logo className={css.logo} />
 
       <h1 className={css.h1}>
-        Got rekt<span className={css.q}>?</span>
+        Got rekt
+        {/* eslint-disable-next-line */}
+        <span className={qClasses} onClick={() => setCount(c => c + 1)}>
+          ?
+        </span>
       </h1>
       <p className={css.bodyText}>
         Nulla facilisi. Nam accumsan rhoncus justo vel faucibus. Curabitur ut

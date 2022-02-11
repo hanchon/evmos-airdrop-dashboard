@@ -9,7 +9,7 @@
   }
 
   @media (--desktop-viewport) {
-    width: 80vw;
-    max-width: 1440px;
+    width: 85vw;
+    max-width: 1840px;
   }
 }

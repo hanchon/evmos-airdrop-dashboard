@@ -1,7 +1,11 @@
 .card {
-  background-color: var(--color-darkGray-2);
+  border: 4px solid transparent;
   border-radius: 16px;
-  padding: 24px 32px;
+  padding: var(--unit-6);
+
+  @media (--tablet-viewport) {
+    padding: var(--unit-8);
+  }
 }
 
 .title {
@@ -10,4 +14,12 @@
   text-transform: uppercase;
   font-weight: bold;
   margin-bottom: 16px;
+}
+
+.primary {
+  background-color: var(--color-darkGray-2);
+}
+
+.secondary {
+  border-color: var(--color-darkGray-2);
 }

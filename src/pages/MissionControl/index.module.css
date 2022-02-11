@@ -1,0 +1,126 @@
+.missionControl {
+  display: grid;
+  grid-template:
+    'stt1 stt2' auto
+    'stt3 stt4' auto
+    'clms clms' auto
+    'aird aird' auto
+    'addr addr' auto
+    'lnks lnks' auto
+    'dapp dapp' auto
+    / 1fr 1fr;
+  gap: 12px;
+
+  @media (--tablet-viewport) {
+    grid-template:
+      'stt1 stt1 stt1 stt2 stt2 stt2' auto
+      'stt3 stt3 stt3 stt4 stt4 stt4' auto
+      'clms clms aird aird addr addr' auto
+      'lnks lnks dapp dapp dapp dapp' auto
+      / 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (--desktop-viewport) {
+    grid-template:
+      'stt1 stt1 stt1 stt2 stt2 stt2 stt3 stt3 stt3 stt4 stt4 stt4' auto
+      'clms clms clms clms aird aird aird aird addr addr addr addr' auto
+      'lnks lnks lnks lnks dapp dapp dapp dapp dapp dapp dapp dapp' auto
+      / 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 28px;
+  }
+}
+
+.statCard1 {
+  grid-area: stt1;
+}
+
+.statCard2 {
+  grid-area: stt2;
+}
+
+.statCard3 {
+  grid-area: stt3;
+}
+
+.statCard4 {
+  grid-area: stt4;
+}
+
+.mySummary {
+  grid-area: clms;
+}
+
+.airdropTokens {
+  grid-area: aird;
+}
+
+.recipientAddresses {
+  grid-area: addr;
+}
+
+.linksArea {
+  grid-area: lnks;
+}
+
+.top3Area {
+  grid-area: dapp;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.externalLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  & > * {
+    border-radius: var(--unit-4);
+  }
+}
+
+.externalLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (--has-hover) {
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.04);
+    }
+  }
+}
+
+.externalLinkIcon {
+  height: 24px;
+  flex: 0 0 auto;
+}
+
+.top3Wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: auto 0;
+  gap: var(--unit-4);
+
+  @media (--tablet-viewport) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: var(--unit-2);
+  }
+}
+
+.dappWrapper {
+  display: flex;
+  gap: var(--unit-4);
+  align-items: center;
+
+  & > svg {
+    flex: 0 0 auto;
+  }
+
+  @media (--tablet-viewport) {
+    justify-content: space-between;
+  }
+}

@@ -11,5 +11,16 @@
   --color-darkGray-5: #918378;
 
   /*  */
+  --unit: 4px;
+  --unit-2: calc(var(--unit) * 2);
+  --unit-3: calc(var(--unit) * 3);
+  --unit-4: calc(var(--unit) * 4);
+  --unit-5: calc(var(--unit) * 5);
+  --unit-6: calc(var(--unit) * 6);
+  --unit-7: calc(var(--unit) * 7);
+  --unit-8: calc(var(--unit) * 8);
+  --unit-9: calc(var(--unit) * 9);
+  --unit-10: calc(var(--unit) * 10);
+
   --ease-elastic: cubic-bezier(0.41, 1.93, 0.66, 0.79);
 }

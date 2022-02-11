@@ -6,6 +6,8 @@ import qrcode from '@images/qrcode.svg';
 
 // Components
 import { NavLink } from 'react-router-dom';
+import Button from '@components/Button';
+import WalletIcon from '@images/icons/WalletIcon';
 
 // Constants
 import { MISSION_CONTROLL_ROUTE, NAVIGATION_LINKS } from '@constants/routes';
@@ -14,8 +16,6 @@ import { WalletContext } from '@constants/contexts';
 // Styles
 import cn from 'classnames';
 import css from './index.module.css';
-import Button from '@components/Button';
-import WalletIcon from '@images/icons/WalletIcon';
 
 export default function NavigationBar(props: any) {
   const { address } = useContext(WalletContext);
@@ -46,8 +46,10 @@ export default function NavigationBar(props: any) {
       </NavLink>
 
       <div className={css.navWrapper}>
-        {NAVIGATION_LINKS.map(({ name, path: to }) => (
+        {NAVIGATION_LINKS.map(({ name, path: to, Icon }) => (
           <NavLink className={getNavClassName} to={to} key={to}>
+            {/* @ts-ignore */}
+            <Icon className={css.navLinkIcon} />
             {name}
           </NavLink>
         ))}

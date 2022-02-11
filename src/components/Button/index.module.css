@@ -12,7 +12,9 @@
   font-weight: bold;
   font-size: 18px;
   text-transform: uppercase;
-  /* outline-offset: 4px; */
+  line-height: 1;
+
+  transition: border 0.2s ease, background-color 0.2s ease;
 }
 
 .primary {
@@ -38,4 +40,5 @@
 
 .icon {
   margin-right: 8px;
+  flex: 0 0 auto;
 }

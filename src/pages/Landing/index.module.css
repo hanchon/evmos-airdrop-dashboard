@@ -39,6 +39,7 @@
   font-weight: 800;
   font-size: 64px;
   line-height: 1;
+  user-select: none;
 
   text-align: center;
   margin-bottom: 40px;
@@ -54,13 +55,19 @@
 
 .q {
   display: inline-block;
-  /* transition: transform 1s var(--ease-elastic);
-  transform-origin: center 80px; */
+  transition: transform 1s var(--ease-elastic);
+  transform-origin: center 80px;
+  cursor: pointer;
 }
 
-/* .rect {
+.discover {
+  transition: transform 0.5s var(--ease-elastic);
+  transform: rotate(20deg);
+}
+
+.rekt {
   transform: rotate(180deg);
-} */
+}
 
 .bodyText {
   font-size: 16px;

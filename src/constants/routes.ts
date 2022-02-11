@@ -1,5 +1,9 @@
 import React from 'react';
 
+import AirdropIcon from '@images/icons/AirdropIcon';
+import MarsIcon from '@images/icons/MarsIcon';
+import GaugeIcon from '@images/icons/GaugeIcon';
+
 const MissionControlPage = React.lazy(() => import('@pages/MissionControl'));
 const RektdropRewardsPage = React.lazy(() => import('@pages/RektdropRewards'));
 const TestnetMissionsPage = React.lazy(() => import('@pages/TestnetMissions'));
@@ -9,24 +13,28 @@ type Page = {
   name: string;
   path: string;
   Component: React.LazyExoticComponent<() => JSX.Element>;
+  Icon?: React.ReactNode;
 };
 
 export const MISSION_CONTROLL_ROUTE: Page = {
   name: 'Mission Control',
   path: 'mission-control',
   Component: MissionControlPage,
+  Icon: GaugeIcon,
 };
 
 export const REWARDS_PAGE_ROUTE: Page = {
   name: 'Rektdrop Rewards',
   path: 'rewards',
   Component: RektdropRewardsPage,
+  Icon: AirdropIcon,
 };
 
 export const MISSIONS_ROUTE: Page = {
   name: 'Testnet Missions',
   path: 'missions',
   Component: TestnetMissionsPage,
+  Icon: MarsIcon,
 };
 
 export const NAVIGATION_LINKS: Page[] = [

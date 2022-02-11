@@ -1,0 +1,46 @@
+.text {
+  line-height: 1.2;
+}
+
+.body {
+  font-size: 1em;
+  opacity: 0.7;
+}
+
+.pageTitle {
+  font-weight: bold;
+  font-size: 2.25em;
+
+  color: var(--color-pearl);
+  margin-bottom: 40px;
+}
+
+.value {
+  font-weight: bold;
+  font-size: 1.7em;
+}
+
+.valueSmall {
+  font-weight: bold;
+  font-size: 1.25em;
+}
+
+.spacing-1 {
+  margin-bottom: var(--unit);
+}
+
+.spacing-2 {
+  margin-bottom: calc(var(--unit) * 2);
+}
+
+.spacing-3 {
+  margin-bottom: calc(var(--unit) * 3);
+}
+
+.spacing-4 {
+  margin-bottom: calc(var(--unit) * 4);
+}
+
+.spacing-5 {
+  margin-bottom: calc(var(--unit) * 5);
+}
