@@ -6,6 +6,7 @@ import Card from '@components/Card';
 import Text from '@components/Text';
 import Button from '@components/Button';
 import ProgressBar from '@components/ProgressBar';
+import Stat from '@components/Stat';
 
 // Images
 import AstronautIcon from '@images/icons/AstronautIcon';
@@ -21,10 +22,10 @@ import getRektDropInformation from '../../services/evmos';
 
 // Styles
 import css from './index.module.css';
-import Stat from '@components/Stat';
 
 export default function RektdropRewardsPage() {
   const { address } = useContext(WalletContext);
+
   // --
   const [rektDropClaims, setRektDropClaims] = useState<Claim[]>([]);
   const [rektDropError, setRektDropError] = useState('');

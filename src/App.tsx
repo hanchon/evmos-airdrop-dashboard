@@ -10,11 +10,13 @@ import { MISSION_CONTROLL_ROUTE } from '@constants/routes';
 import { WalletContext } from '@constants/contexts';
 
 // Components
+import Backdrop from '@components/Backdrop';
+
+// Local Components
 import InnerRoutes from './InnerRoutes';
 
 // Styles
-import css from './index.module.css';
-import Backdrop from '@components/Backdrop';
+// import css from './index.module.css';
 
 function App() {
   const navigate = useNavigate();
@@ -47,7 +49,7 @@ function App() {
   return (
     <WalletContext.Provider value={providerValue}>
       <Backdrop>
-        <React.Suspense fallback={<></>}>
+        <React.Suspense fallback={<>Loading...</>}>
           <Routes>
             <Route
               path="/"

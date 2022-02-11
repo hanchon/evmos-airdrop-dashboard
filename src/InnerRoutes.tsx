@@ -41,7 +41,7 @@ export default function InnerRoutes() {
     <>
       <NavigationBar pointCount={userMissionStats.completedPoints} />
       <div className={css.content}>
-        <React.Suspense fallback={<></>}>
+        <React.Suspense fallback={<>Loading...</>}>
           <Routes>
             {ALL_ROUTES.map(({ path, Component }) => (
               <Route key={path} path={path} element={<Component />} />

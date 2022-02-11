@@ -3,7 +3,7 @@ import cn from 'classnames';
 import css from './index.module.css';
 
 type ButtonProps = {
-  kind?: 'primary' | 'secondary';
+  kind?: 'primary' | 'secondary' | 'tertiary';
   Icon?: React.ReactNode;
 };
 

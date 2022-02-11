@@ -46,7 +46,7 @@ const Breakdown: React.FC<BreakdownProps> = ({
       </div>
       <div className={css.breakdownItemsWrapper}>
         {items.map(({ title: itemTitle, value, color }, i) => (
-          <div>
+          <div key={itemTitle}>
             <div
               className={css.badge}
               style={{ backgroundColor: color || ORDERED_COLOR_LIST[i] }}

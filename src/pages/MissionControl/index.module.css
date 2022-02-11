@@ -9,7 +9,7 @@
     'lnks lnks' auto
     'dapp dapp' auto
     / 1fr 1fr;
-  gap: 12px;
+  gap: var(--unit-3);
 
   @media (--tablet-viewport) {
     grid-template:
@@ -18,7 +18,7 @@
       'clms clms aird aird addr addr' auto
       'lnks lnks dapp dapp dapp dapp' auto
       / 1fr 1fr 1fr 1fr 1fr 1fr;
-    gap: 16px;
+    gap: var(--unit-4);
   }
 
   @media (--desktop-viewport) {
@@ -27,7 +27,7 @@
       'clms clms clms clms aird aird aird aird addr addr addr addr' auto
       'lnks lnks lnks lnks dapp dapp dapp dapp dapp dapp dapp dapp' auto
       / 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    gap: 28px;
+    gap: var(--unit-7);
   }
 }
 

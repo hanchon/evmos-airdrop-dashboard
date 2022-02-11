@@ -1,16 +1,20 @@
-import Logo from '@images/Logo';
+import { useMemo, useState } from 'react';
 
+// Assets
+import Logo from '@images/Logo';
+import WalletIcon from '@images/icons/WalletIcon';
+
+// Components
 import Button, { LinkButton } from '@components/Button';
 
-import WalletIcon from '@images/icons/WalletIcon';
+// Constants
 import { MISSION_CONTROLL_ROUTE } from '@constants/routes';
-
-import { connectKeplrWallet } from '../../services/keplr';
 
 // Styles
 import cn from 'classnames';
 import css from './index.module.css';
-import { useMemo, useState } from 'react';
+
+import { connectKeplrWallet } from '../../services/keplr';
 
 export interface LandingPageProps {
   updateKeplrState: (address: string | null) => void;

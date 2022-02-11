@@ -19,11 +19,9 @@ const Breakdown: React.FC<BreakdownProps> = ({ items, ...restProps }) => {
       const stroke = color || ORDERED_COLOR_LIST[i];
       acc += percentage;
 
-      return { d, stroke };
+      return { d, stroke, key: stroke };
     });
   }, [items]);
-
-  console.log(paths);
 
   return (
     <svg

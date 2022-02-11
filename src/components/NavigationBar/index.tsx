@@ -1,14 +1,16 @@
-import { useContext, useMemo, useCallback } from 'react';
+import { useState, useContext, useMemo, useCallback } from 'react';
 
 // Images
 import Logo from '@images/Logo';
-import qrcode from '@images/qrcode.svg';
+import MetamaskIcon from '@images/icons/MetamaskIcon';
+import KeplrIcon from '@images/icons/KeplrIcon';
+// import QRCodeIcon from '@images/icons/QRCodeIcon';
 
 // Components
 import { NavLink } from 'react-router-dom';
 import Button from '@components/Button';
 import WalletIcon from '@images/icons/WalletIcon';
-
+import Modal from '@components/Modal';
 // Constants
 import { MISSION_CONTROLL_ROUTE, NAVIGATION_LINKS } from '@constants/routes';
 import { WalletContext } from '@constants/contexts';
@@ -18,6 +20,7 @@ import cn from 'classnames';
 import css from './index.module.css';
 
 export default function NavigationBar(props: any) {
+  const [isModalShown, setIsModalShown] = useState(false);
   const { address } = useContext(WalletContext);
   const { pointCount } = props;
 
@@ -41,6 +44,38 @@ export default function NavigationBar(props: any) {
 
   return (
     <div className={css.wrapper}>
+      <Modal
+        title="Connect Wallet"
+        isOpen={isModalShown}
+        onClose={() => setIsModalShown(false)}
+      >
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '12px',
+          }}
+        >
+          <Button
+            kind="tertiary"
+            Icon={MetamaskIcon}
+            style={{
+              justifyContent: 'flex-start',
+            }}
+          >
+            Metamask
+          </Button>
+          <Button
+            kind="tertiary"
+            Icon={KeplrIcon}
+            style={{
+              justifyContent: 'flex-start',
+            }}
+          >
+            Keplr
+          </Button>
+        </div>
+      </Modal>
       <NavLink className={css.logo} to={MISSION_CONTROLL_ROUTE.path}>
         <Logo />
       </NavLink>
@@ -56,7 +91,11 @@ export default function NavigationBar(props: any) {
       </div>
 
       <div className={css.walletWrapper}>
-        <Button Icon={WalletIcon} kind="secondary">
+        <Button
+          Icon={WalletIcon}
+          kind="secondary"
+          onClick={() => setIsModalShown(true)}
+        >
           Connect Wallet
         </Button>
         {/* <div className={cardPointTag addressPoints}>{`${pointCount} PTS`}</div>

@@ -2,8 +2,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  color: currentColor;
 
-  color: var(--color-pearl);
   background-color: transparent;
   border: 2px solid transparent;
   border-radius: 4px;
@@ -20,6 +20,7 @@
 .primary {
   background-color: var(--color-red);
   border-color: var(--color-red);
+  color: var(--color-pearl);
 
   @media (--has-hover) {
     &:hover {
@@ -38,6 +39,15 @@
   }
 }
 
+.tertiary {
+  border-color: var(--color-darkPearl);
+
+  @media (--has-hover) {
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+  }
+}
 .icon {
   margin-right: 8px;
   flex: 0 0 auto;
