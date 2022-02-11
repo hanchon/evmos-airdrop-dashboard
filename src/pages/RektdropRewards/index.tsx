@@ -1,10 +1,14 @@
 import { useContext, useEffect, useState } from 'react';
 
 // Components
+import Info from '@components/Info';
 import Card from '@components/Card';
+import Text from '@components/Text';
+import Button from '@components/Button';
+import ProgressBar from '@components/ProgressBar';
 
-// Assets
-import rektdropIcon from '@images/rektdropIcon.svg';
+// Images
+import AstronautIcon from '@images/icons/AstronautIcon';
 
 // Types
 import type { Claim } from '@hanchon/evmosjs';
@@ -15,8 +19,13 @@ import { WalletContext } from '@constants/contexts';
 // Utils
 import getRektDropInformation from '../../services/evmos';
 
+// Styles
+import css from './index.module.css';
+import Stat from '@components/Stat';
+
 export default function RektdropRewardsPage() {
   const { address } = useContext(WalletContext);
+  // --
   const [rektDropClaims, setRektDropClaims] = useState<Claim[]>([]);
   const [rektDropError, setRektDropError] = useState('');
 
@@ -31,15 +40,83 @@ export default function RektdropRewardsPage() {
   }, []);
 
   return (
-    <div className="page-base page-content">
-      <div className="page--header">Rektdrop Rewards</div>
-      {rektDropError ? (
-        <p className="rekt-error">{rektDropError} </p>
-      ) : (
-        <Card title="Foo title" aria-label="This is a foo card">
-          Foo
+    <>
+      <Text type="pageTitle">Claim Your Rektdrop</Text>
+
+      <div className={css.claimCardsWrapper}>
+        <Card className={css.progressCard} aria-label="Claim Progress">
+          <Text type="valueSmall">Progress</Text>
+          <ProgressBar className={css.progress} value={50} />
+          <Text type="value">50%</Text>
         </Card>
-      )}
-    </div>
+
+        <Card className={css.claimCard} aria-label="">
+          <AstronautIcon className={css.claimCardIcon} />
+          <Info
+            className={css.claimCardInfo}
+            title="Vivamus quis velit nec augue loborti"
+            value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in odio fermentum."
+          />
+          <div className={css.CTAWrapper}>
+            <Button kind="secondary">25%</Button>
+            <Button>Claim</Button>
+          </div>
+        </Card>
+
+        <Card className={css.claimCard} aria-label="">
+          <AstronautIcon className={css.claimCardIcon} />
+          <Info
+            className={css.claimCardInfo}
+            title="Vivamus quis velit nec augue loborti"
+            value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in odio fermentum."
+          />
+          <div className={css.CTAWrapper}>
+            <Button kind="secondary">25%</Button>
+            <Button>Claim</Button>
+          </div>
+        </Card>
+
+        <Card className={css.claimCard} aria-label="">
+          <AstronautIcon className={css.claimCardIcon} />
+          <Info
+            className={css.claimCardInfo}
+            title="Vivamus quis velit nec augue loborti"
+            value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in odio fermentum."
+          />
+          <div className={css.CTAWrapper}>
+            <Button kind="secondary">25%</Button>
+            <Button>Claim</Button>
+          </div>
+        </Card>
+
+        <Card className={css.claimCard} aria-label="">
+          <AstronautIcon className={css.claimCardIcon} />
+          <Info
+            className={css.claimCardInfo}
+            title="Vivamus quis velit nec augue loborti"
+            value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in odio fermentum."
+          />
+          <div className={css.CTAWrapper}>
+            <Button kind="secondary">25%</Button>
+            <Button>Claim</Button>
+          </div>
+        </Card>
+
+        <Card type="secondary" className={css.claimCard} aria-label="">
+          <AstronautIcon className={css.claimCardIcon} />
+          <Info
+            className={css.claimCardInfo}
+            title="Coming Soon"
+            value="Lorem ipsum dolor sit amet uris in odio fermentum."
+          />
+          <div className={css.countdownWrapper}>
+            <Stat title="Days" value={12} />
+            <Stat title="Hrs" value={8} />
+            <Stat title="Mins" value={17} />
+            <Stat title="Secs" value={56} />
+          </div>
+        </Card>
+      </div>
+    </>
   );
 }

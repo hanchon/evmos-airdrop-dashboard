@@ -1,110 +1,80 @@
-/* .r--card {
+.claimCardsWrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  gap: var(--unit-4);
+}
+
+.progressCard {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
+  gap: var(--unit-4);
+  background-color: rgba(var(--c-darkGray-2-rgb), 0.5);
+  padding-top: var(--unit-4);
+  padding-bottom: var(--unit-4);
 
-  background: #ffffff;
-  padding: 36px 24px;
+  @media (--tablet-viewport) {
+    gap: var(--unit-6);
+  }
+
+  @media (--desktop-viewport) {
+    gap: var(--unit-10);
+  }
 }
 
-.r--page-base {
-  width: 80vw;
-  margin: 48px auto 72px auto;
+.progress {
+  flex: 1 1 auto;
+}
 
+/* -- */
+
+.claimCard {
   display: flex;
-  flex-direction: column;
-}
-
-.r--grid {
-  margin: 36px auto 36px auto;
-  width: 100%;
-}
-
-.r--card--icon {
-  margin-left: 48px;
-  margin-right: 48px;
-
-  width: 50px;
-}
-
-.r--card--title {
-  font-weight: 700;
-  font-size: 24px;
-  color: #000;
-}
-
-.r--card--body {
-  margin-top: 18px;
-
-  font-size: 14px;
-  line-height: 24px;
-}
-
-.r--card--text-container {
-  display: flex;
+  gap: var(--unit-7);
   flex-direction: column;
 
-  width: 60%;
-}
-
-.r--card--button-container {
-  margin-top: auto;
-  margin-bottom: auto;
-
-  display: flex;
-  flex-direction: row;
-}
-
-.r--card--icon-text-container {
-  display: flex;
-  flex-direction: row;
-}
-
-.r--card--point-tag {
-  margin: auto;
-
-  background: #e5e5e5;
-  height: 20px;
-  line-height: 20px;
-  min-width: 72px;
-  border-radius: 20px;
-
-  padding: 8px 16px;
-  font-weight: 700;
-  font-size: 16px;
-  text-align: center;
-}
-
-.r--card--point-tag-completed {
-  background: #000000;
-  color: #fff;
-}
-.rekt-error {
-  color: red;
-}
-
-@media screen and (max-width: 768px) {
-  .r--card {
-    flex-direction: column;
+  @media (--tablet-viewport) {
+    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
-    align-items: flex-start;
   }
+}
 
-  .r--card--icon {
-    margin: 0;
-  }
+.claimCardIcon {
+  flex: 0 0 auto;
+  height: 48px;
+  width: 48px;
+}
 
-  .r--card--text-container {
-    margin-top: 24px;
+.claimCardInfo {
+  flex: 1 1 auto;
+}
+
+.CTAWrapper {
+  display: flex;
+  gap: var(--unit-4);
+
+  & > * {
     width: 100%;
   }
 
-  .r--card--button-container {
-    margin-top: 24px;
-    margin-bottom: 0px;
+  @media (--tablet-viewport) {
+    & > * {
+      width: auto;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
+}
 
-  .r--card--icon-text-container {
-    flex-direction: column;
+.countdownWrapper {
+  display: flex;
+  justify-content: space-evenly;
+  gap: var(--unit-3);
+
+  @media (--tablet-viewport) {
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--unit-8);
   }
-} */
+}

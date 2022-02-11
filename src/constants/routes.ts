@@ -24,14 +24,14 @@ export const MISSION_CONTROLL_ROUTE: Page = {
 };
 
 export const REWARDS_PAGE_ROUTE: Page = {
-  name: 'Rektdrop Rewards',
+  name: 'Claim Your Rektdrop',
   path: 'rewards',
   Component: RektdropRewardsPage,
   Icon: AirdropIcon,
 };
 
 export const MISSIONS_ROUTE: Page = {
-  name: 'Testnet Missions',
+  name: 'Mars Missions',
   path: 'missions',
   Component: TestnetMissionsPage,
   Icon: MarsIcon,
