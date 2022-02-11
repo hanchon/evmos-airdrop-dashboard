@@ -1,0 +1,28 @@
+@import 'reset.css';
+@import 'variables.css';
+
+body {
+  font-size: 14px;
+  color: var(--color-pearl);
+  background: var(--color-darkGray-5);
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-pearl);
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a,
+button,
+[tabindex]:not([tabindex='0']):not([tabindex^='-']) {
+  &:focus-visible {
+    outline-offset: 4px;
+    outline: 1px solid var(--color-pearl);
+  }
+}

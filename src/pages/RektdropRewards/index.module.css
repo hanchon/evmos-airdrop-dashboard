@@ -1,0 +1,80 @@
+.claimCardsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--unit-4);
+}
+
+.progressCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--unit-4);
+  background-color: rgba(var(--c-darkGray-2-rgb), 0.5);
+  padding-top: var(--unit-4);
+  padding-bottom: var(--unit-4);
+
+  @media (--tablet-viewport) {
+    gap: var(--unit-6);
+  }
+
+  @media (--desktop-viewport) {
+    gap: var(--unit-10);
+  }
+}
+
+.progress {
+  flex: 1 1 auto;
+}
+
+/* -- */
+
+.claimCard {
+  display: flex;
+  gap: var(--unit-7);
+  flex-direction: column;
+
+  @media (--tablet-viewport) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.claimCardIcon {
+  flex: 0 0 auto;
+  height: 48px;
+  width: 48px;
+}
+
+.claimCardInfo {
+  flex: 1 1 auto;
+}
+
+.CTAWrapper {
+  display: flex;
+  gap: var(--unit-4);
+
+  & > * {
+    width: 100%;
+  }
+
+  @media (--tablet-viewport) {
+    & > * {
+      width: auto;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}
+
+.countdownWrapper {
+  display: flex;
+  justify-content: space-evenly;
+  gap: var(--unit-3);
+
+  @media (--tablet-viewport) {
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--unit-8);
+  }
+}

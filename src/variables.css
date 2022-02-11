@@ -1,0 +1,34 @@
+:root {
+  --color-pearl: #faf1e4;
+  --color-darkPearl: #dad2c7;
+  --color-red: #ed4e33;
+  --color-darkRed: #a04232;
+  --color-yellow: #edcd5b;
+  --color-darkGray-1: #0b0a09;
+  --color-darkGray-2: #2d2925;
+  --color-darkGray-3: #4f4740;
+  --color-darkGray-4: #70655c;
+  --color-darkGray-5: #918378;
+
+  /* DarkGray-2 */
+  --c-darkGray-2: #2d2925;
+  --c-darkGray-2-rgb: 45, 41, 37;
+  --c-darkGray-2-h: 30%;
+  --c-darkGray-2-s: 9.8%;
+  --c-darkGray-2-l: 16.1%;
+  --c-darkGray-2-hsl: 30%, 9.8%, 16.1%;
+
+  /*  */
+  --unit: 4px;
+  --unit-2: calc(var(--unit) * 2);
+  --unit-3: calc(var(--unit) * 3);
+  --unit-4: calc(var(--unit) * 4);
+  --unit-5: calc(var(--unit) * 5);
+  --unit-6: calc(var(--unit) * 6);
+  --unit-7: calc(var(--unit) * 7);
+  --unit-8: calc(var(--unit) * 8);
+  --unit-9: calc(var(--unit) * 9);
+  --unit-10: calc(var(--unit) * 10);
+
+  --ease-elastic: cubic-bezier(0.41, 1.93, 0.66, 0.79);
+}

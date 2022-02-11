@@ -1,0 +1,22 @@
+.statCard {
+  display: flex;
+  align-items: center;
+  padding: var(--unit-4);
+
+  @media (--tablet-viewport) {
+    padding: var(--unit-6);
+  }
+}
+
+.icon {
+  flex: 0 0 auto;
+  height: 32px;
+  width: 32px;
+  margin-right: var(--unit-3);
+
+  @media (--tablet-viewport) {
+    height: 48px;
+    width: 48px;
+    margin-right: var(--unit-4);
+  }
+}

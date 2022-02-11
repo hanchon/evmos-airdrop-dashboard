@@ -5,14 +5,23 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "lib": [
-      "es2020", "dom"
-    ],
+    "lib": ["es2020", "dom"],
     "moduleResolution": "node",
     "noEmit": true,
     "strict": true,
     "target": "esnext",
-    "baseUrl": ".",
+    "baseUrl": "./",
+    "paths": {
+      "@assets/*": ["src/assets/*"],
+      "@images/*": ["src/images/*"],
+      "@components/*": ["src/components/*"],
+      "@constants": ["src/constants/index"],
+      "@constants/*": ["src/constants/*"],
+      "@pages/*": ["src/pages/*"],
+      "@providers/*": ["src/providers/*"],
+      "@types": ["src/types/index"],
+      "@types/*": ["src/types/*"]
+    },
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
@@ -25,7 +34,5 @@
     "metro.config.js",
     "jest.config.js"
   ],
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

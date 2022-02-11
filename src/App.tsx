@@ -1,116 +1,50 @@
-import React, {useEffect} from 'react';
+import React, { useContext, useEffect } from 'react';
 
-import LandingPage from './pages/landing/landing';
-import DashboardPage from './pages/dashboard/dashboard';
-import MissionControlPage from './pages/mission control/missionControl';
-import RektdropRewardsPage from './pages/rektdrop rewards/rektdropRewards';
-import TestnetMissionsPage from './pages/testnet missions/testnetMissions';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
-import NavigationBar from './components/navigation bar/navigationBar';
+// Pages
+import LandingPage from '@pages/Landing';
 
-import {
-  getCompletedTasks,
-  getAnalytics,
-  getGlobalMissionStats,
-} from './services/missionsService';
-import MissionData from './assets/missiondata';
-import {Claim, GlobalMissionStats} from './types';
-import getRektDropInformation from './services/evmos';
+// Constants
+import { MISSION_CONTROLL_ROUTE } from '@constants/routes';
+import WalletProvider, { WalletContext } from '@providers/WalletProvider';
+
+// Components
+import Backdrop from '@components/Backdrop';
+
+// Local Components
+import InnerRoutes from './InnerRoutes';
+
+// Styles
+// import css from './index.module.css';
 
 function App() {
-  const [page, setPage] = React.useState(0);
-  const [userAddress, setUserAddress] = React.useState('');
-  const [completedTasks, setCompletedTasks] = React.useState([] as number[]);
-  const [rektDropClaims, setRektDropClaims] = React.useState([] as Claim[]);
-  const [rektDropError, setRektDropError] = React.useState('');
-  const [globalMissionStats, setGlobalMissionStats] = React.useState(
-    {} as GlobalMissionStats,
-  );
+  const { address } = useContext(WalletContext);
+  const navigate = useNavigate();
 
-  const userMissionStats = getAnalytics(
-    completedTasks,
-    Object.values(MissionData).flatMap(array => array),
-  );
-
-  const updateKeplrState = (address: string | null): void => {
-    if (!address) {
-      // TODO: error handling
-      return;
-    }
-    setUserAddress(address);
-    setPage(3);
-  };
-
-  async function getContent() {
-    const completedTasksResponse = getCompletedTasks(userAddress);
-    const rektDropInformationResponse = getRektDropInformation(userAddress);
-    const globalMissionStatsResposne = getGlobalMissionStats(userAddress);
-
-    setCompletedTasks(await completedTasksResponse);
-    setRektDropClaims((await rektDropInformationResponse).claims);
-    setRektDropError((await rektDropInformationResponse).error);
-    setGlobalMissionStats(await globalMissionStatsResposne);
-  }
+  // useEffect(() => {
+  //   if (userAddress) {
+  //     navigate(userAddress ? '/mission-control' : '', { replace: true });
+  //   }
+  // }, []);
 
   useEffect(() => {
-    if (userAddress) {
-      getContent();
+    if (address) {
+      navigate(MISSION_CONTROLL_ROUTE.path);
     }
-  }, [userAddress]);
-
-  const pageContent = () => {
-    if (page === 0) {
-      return <LandingPage updateKeplrState={updateKeplrState} />;
-    }
-
-    if (page === 1) {
-      return (
-        <MissionControlPage
-          userMissionStats={userMissionStats}
-          globalMissionStats={globalMissionStats}
-        />
-      );
-    }
-
-    if (page === 2) {
-      return (
-        <RektdropRewardsPage
-          rektDropClaims={rektDropClaims}
-          rektDropError={rektDropError}
-        />
-      );
-    }
-
-    if (page === 3) {
-      return <TestnetMissionsPage />;
-    }
-
-    if (page === 4) {
-      return (
-        <DashboardPage
-          userAddress={userAddress}
-          userMissions={completedTasks}
-        />
-      );
-    }
-
-    return null;
-  };
+  }, [address]);
 
   return (
-    <div className="page-base">
-      {page !== 0 && (
-        <NavigationBar
-          pointCount={userMissionStats.completedPoints}
-          selectedPage={page}
-          address={userAddress}
-          didSelectPage={(newPage: number) => {
-            setPage(newPage);
-          }}
-        />
-      )}
-      {pageContent()}
-    </div>
+    <WalletProvider>
+      <Backdrop>
+        <React.Suspense fallback={<>Loading...</>}>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="*" element={<InnerRoutes />} />
+          </Routes>
+        </React.Suspense>
+      </Backdrop>
+    </WalletProvider>
   );
 }
 

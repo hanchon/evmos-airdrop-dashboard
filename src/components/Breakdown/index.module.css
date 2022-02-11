@@ -1,0 +1,33 @@
+.breakdownArcSectionWrapper {
+  position: relative;
+  margin: var(--unit-10) 0 var(--unit-6);
+}
+
+.breakdownAggregationWrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 50%;
+  margin: 15% auto auto auto;
+  text-align: center;
+}
+
+.breakdownItemsWrapper {
+  display: flex;
+  gap: var(--unit-3);
+  justify-content: space-around;
+}
+
+.badge {
+  --size: 12px;
+
+  display: inline-block;
+  position: absolute;
+  height: var(--size);
+  width: var(--size);
+  border-radius: calc(var(--size) / 2);
+  transform: translateX(calc(-6px - var(--size)));
+}

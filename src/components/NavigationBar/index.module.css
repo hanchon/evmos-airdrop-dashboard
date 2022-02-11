@@ -1,0 +1,60 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px;
+  margin-bottom: 64px;
+}
+
+.logo {
+  color: var(--color-pearl);
+  flex: 0 0 auto;
+}
+
+.navWrapper {
+  --gap: 32px;
+
+  display: flex;
+  justify-content: center;
+  flex: 1 0 auto;
+  gap: var(--gap);
+
+  @supports not (gap: var(--gap)) {
+    & * + * {
+      margin-left: var(--gap);
+    }
+  }
+}
+
+.walletWrapper {
+  flex: 0 0 auto;
+}
+
+.navLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  padding: var(--unit-3) var(--unit-4);
+  border-radius: 500px;
+  border: 1px solid transparent;
+  transition: border 0.2s ease, background-color 0.2s ease;
+
+  &.isActive {
+    border-color: var(--color-pearl);
+  }
+
+  @media (--small-viewport) {
+    background: blue;
+  }
+
+  @media (--has-hover) {
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+.navLinkIcon {
+  margin-right: var(--unit-2);
+}

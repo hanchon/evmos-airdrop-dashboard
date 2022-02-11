@@ -1,0 +1,113 @@
+:root {
+  --page-start-h: 70vh;
+
+  @media (--tablet-viewport) {
+    --page-start-h: 75vh;
+  }
+}
+
+.backdrop {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+
+  & > * {
+    position: absolute;
+    inset: 0;
+  }
+}
+
+.page {
+  z-index: 1;
+  overflow: auto;
+  overflow-x: hidden;
+
+  &.inner {
+    background: linear-gradient(
+      0deg,
+      var(--color-darkGray-1) 0%,
+      var(--color-darkGray-1) calc(var(--page-start-h) + 2vh),
+      transparent calc(var(--page-start-h) + 2vh),
+      transparent 100%
+    );
+  }
+}
+
+.mWrapper {
+  overflow: hidden;
+  z-index: 0;
+}
+
+.inner {
+  & .m {
+    --width: 200%;
+
+    bottom: var(--page-start-h);
+    transform: scaleY(0.7);
+    transform-origin: bottom;
+
+    @media (--tablet-viewport) {
+      --width: 120%;
+    }
+  }
+}
+
+.m {
+  --width: 200%;
+
+  position: absolute;
+  width: var(--width);
+  bottom: 0;
+  left: calc((100% - var(--width)) / 2);
+  max-width: none;
+
+  @media (--tablet-viewport) {
+    --width: 120%;
+  }
+}
+
+.m1 {
+  fill: var(--color-darkGray-1);
+  z-index: 4;
+}
+
+.m2 {
+  fill: var(--color-darkGray-2);
+  z-index: 3;
+}
+
+.m3 {
+  fill: var(--color-darkGray-3);
+  z-index: 2;
+}
+
+.m4 {
+  fill: var(--color-darkGray-4);
+  z-index: 1;
+}
+
+.sun {
+  --width: 80vh;
+  --top: 40%;
+  --right: -35%;
+
+  position: absolute;
+  height: auto;
+  width: var(--width);
+  fill: var(--color-pearl);
+  top: var(--top);
+  right: var(--right);
+  opacity: 20%;
+
+  @media (--tablet-viewport) {
+    --top: -30%;
+    --right: -10%;
+  }
+
+  @media (--desktop-viewport) {
+    --width: 90vh;
+    --top: -40%;
+    --right: -20%;
+  }
+}
